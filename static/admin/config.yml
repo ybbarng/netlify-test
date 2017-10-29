@@ -1,0 +1,36 @@
+backend:
+  name: github
+  repo: ybbarng/netlify-test
+  branch: master # Branch to update (optional; defaults to master)
+  base_url: https://blogauth.byb.kr
+
+publish_mode: editorial_workflow
+media_folder: "/src/pages/images"
+public_folder: "img"
+
+collections:
+  - name: "articles"
+    label: "Article"
+    folder: "src/pages/articles"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}---{{slug}}/index.md"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
+      - {label: "Path", name: "path", widget: "string"}
+      - {label: "Category", name: "category", widget: "string"}
+      - {label: "Tags", name: "tags", widget: "hidden", default: ""}
+      - {label: "Description", name: "description", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "pages"
+    label: "Page"
+    folder: "src/pages/pages"
+    create: false
+    slug: "{{year}}-{{month}}-{{day}}---{{slug}}/index.md"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Layout", name: "layout", widget: "hidden", default: "page"}
+      - {label: "Path", name: "path", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
