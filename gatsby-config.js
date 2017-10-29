@@ -1,32 +1,54 @@
 module.exports = {
   siteMetadata: {
-    url: 'https://alxshelepenok.github.com/gatsby-starter-lumen',
-    title: 'Blog by John Doe',
-    subtitle: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
-    copyright: '© All rights reserved.',
+    url: 'https://ybbarng.netlify.com',
+    title: '현지와 용배의 블로그',
+    subtitle: '현지와 용배의 블로그',
+    copyright: '© 2017 livvy & ybbarng All rights reserved.',
     menu: [
       {
         label: 'Articles',
         path: '/'
       },
       {
-        label: 'About me',
-        path: '/about/'
+        label: 'About us',
+        path: '/about-us/'
       },
       {
-        label: 'Contact me',
+        label: 'Contact us',
         path: '/contact/'
       }
     ],
-    author: {
-      name: 'John Doe',
+    group: {
+      name: '현지 & 용배',
       email: '#',
       telegram: '#',
       twitter: '#',
       github: '#',
       rss: '#',
       vk: '#'
-    }
+    },
+    authors: [
+      {
+        id: 'livvy',
+        name: '현지',
+        email: '#',
+        telegram: '#',
+        twitter: '#',
+        github: '#',
+        rss: '#',
+        vk: '#'
+      },
+      {
+        id: 'ybbarng',
+        name: '용배',
+        email: '#',
+        telegram: '#',
+        twitter: '#',
+        github: '#',
+        rss: '#',
+        vk: '#'
+      }
+    ]
   },
   plugins: [
     {

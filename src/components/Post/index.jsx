@@ -13,7 +13,9 @@ class Post extends React.Component {
       description: data.node.frontmatter.description,
       date: data.node.frontmatter.date,
       category: data.node.frontmatter.category,
-      categorySlug: data.node.fields.categorySlug
+      categorySlug: data.node.fields.categorySlug,
+      authorId: data.node.frontmatter.authorId,
+      author: data.node.author
     };
 
     return (
@@ -27,6 +29,9 @@ class Post extends React.Component {
             <Link to={post.categorySlug} className="post__meta-category-link">
               {post.category}
             </Link>
+          </span>
+          <span className="post__meta-author">
+            <a href={`/about-${post.authorId}/`} className="post__meta-author-link">{post.author.name}</a>
           </span>
         </div>
         <h2 className="post__title">

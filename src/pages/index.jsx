@@ -7,9 +7,12 @@ import Sidebar from '../components/Sidebar';
 class IndexRoute extends React.Component {
   render() {
     const items = [];
-    const { title, subtitle } = this.props.data.site.siteMetadata;
+    const { title, subtitle, authors } = this.props.data.site.siteMetadata;
     const posts = this.props.data.allMarkdownRemark.edges;
-    posts.forEach((post) => {
+    posts.forEach((postData) => {
+      const post = postData;
+      post.node.author = authors.find(
+        authorData => authorData.id === post.node.frontmatter.authorId);
       items.push(
         <Post data={post} key={post.node.fields.slug} />
       );
@@ -37,7 +40,8 @@ IndexRoute.propTypes = {
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
         title: PropTypes.string.isRequired,
-        subtitle: PropTypes.string.isRequired
+        subtitle: PropTypes.string.isRequired,
+        authors: PropTypes.array.isRequired
       })
     }),
     allMarkdownRemark: PropTypes.shape({
@@ -59,7 +63,7 @@ export const pageQuery = graphql`
           label
           path
         }
-        author {
+        group {
           name
           email
           telegram
@@ -67,6 +71,10 @@ export const pageQuery = graphql`
           github
           rss
           vk
+        }
+        authors {
+          id
+          name
         }
       }
     }
@@ -84,6 +92,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             date
+            authorId
             category
             description
           }

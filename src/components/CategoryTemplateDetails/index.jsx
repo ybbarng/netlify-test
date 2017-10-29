@@ -5,9 +5,13 @@ import Post from '../Post';
 class CategoryTemplateDetails extends React.Component {
   render() {
     const items = [];
+    const { authors } = this.props.data.site.siteMetadata;
     const category = this.props.pathContext.category;
     const posts = this.props.data.allMarkdownRemark.edges;
-    posts.forEach((post) => {
+    posts.forEach((postData) => {
+      const post = postData;
+      post.node.author = authors.find(
+        authorData => authorData.id === post.node.frontmatter.authorId);
       items.push(
         <Post data={post} key={post.node.fields.slug} />
       );
@@ -32,6 +36,11 @@ class CategoryTemplateDetails extends React.Component {
 
 CategoryTemplateDetails.propTypes = {
   data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        authors: PropTypes.array.isRequired
+      })
+    }),
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.array.isRequired
     })

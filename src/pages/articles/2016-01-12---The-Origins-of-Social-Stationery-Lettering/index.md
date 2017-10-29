@@ -1,6 +1,7 @@
 ---
 title: The Origins of Social Stationery Lettering
 date: "2016-12-01T22:40:32.169Z"
+authorId: livvy
 layout: post
 draft: false
 path: "/posts/the-origins-of-social-stationery-lettering"

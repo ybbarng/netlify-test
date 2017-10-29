@@ -85,3 +85,5 @@ public/
 
 .gatsby-context.js
 gatsby-starter-lumen.iml
+
+package-lock.json

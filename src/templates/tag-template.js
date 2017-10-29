@@ -23,7 +23,8 @@ TagTemplate.propTypes = {
   data: PropTypes.shape({
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
-        title: PropTypes.string.isRequired
+        title: PropTypes.string.isRequired,
+        authors: PropTypes.array.isRequired
       })
     })
   }),
@@ -45,7 +46,7 @@ export const pageQuery = graphql`
           label
           path
         }
-        author {
+        group {
           name
           email
           telegram
@@ -53,6 +54,10 @@ export const pageQuery = graphql`
           github
           rss
           vk
+        }
+        authors {
+          id
+          name
         }
       }
     }
@@ -70,6 +75,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             date
+            authorId
             category
             description
           }

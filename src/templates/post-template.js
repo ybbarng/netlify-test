@@ -5,8 +5,10 @@ import PostTemplateDetails from '../components/PostTemplateDetails';
 
 class PostTemplate extends React.Component {
   render() {
-    const { title, subtitle } = this.props.data.site.siteMetadata;
+    const { title, subtitle, authors } = this.props.data.site.siteMetadata;
     const post = this.props.data.markdownRemark;
+    const author = authors.find(authorData => authorData.id === post.frontmatter.authorId);
+    post.author = author;
 
     let description;
     if (post.frontmatter.description !== null) {
@@ -32,7 +34,8 @@ PostTemplate.propTypes = {
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
         title: PropTypes.string.isRequired,
-        subtitle: PropTypes.string.isRequired
+        subtitle: PropTypes.string.isRequired,
+        authors: PropTypes.array.isRequired
       })
     }),
     markdownRemark: PropTypes.object.isRequired
@@ -48,7 +51,8 @@ export const pageQuery = graphql`
         title
         subtitle
         copyright
-        author {
+        authors {
+          id
           name
           twitter
         }
@@ -64,6 +68,7 @@ export const pageQuery = graphql`
         title
         tags
         date
+        authorId
         description
       }
     }

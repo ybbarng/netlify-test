@@ -47,6 +47,9 @@
                 }
             }
         }
+        &-author {
+            float: right;
+        }
     }
     &__readmore {
         font-size: $typographic-base-font-size;

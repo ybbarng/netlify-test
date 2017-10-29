@@ -10,30 +10,30 @@ import './style.scss';
 class Sidebar extends React.Component {
   render() {
     const { location } = this.props;
-    const { author, subtitle, copyright, menu } = this.props.data.site.siteMetadata;
+    const { group, subtitle, copyright, menu } = this.props.data.site.siteMetadata;
     const isHomePage = get(location, 'pathname', '/') === '/';
 
     /* eslint-disable jsx-a11y/img-redundant-alt*/
-    const authorBlock = (
+    const groupBlock = (
       <div>
         <Link to="/">
           <img
             src={profilePic}
-            className="sidebar__author-photo"
+            className="sidebar__group-photo"
             width="75" height="75"
-            alt={author.name}
+            alt={group.name}
           />
         </Link>
         { isHomePage ? (
-          <h1 className="sidebar__author-title">
-            <Link className="sidebar__author-title-link" to="/">{author.name}</Link>
+          <h1 className="sidebar__group-title">
+            <Link className="sidebar__group-title-link" to="/">{group.name}</Link>
           </h1>
         ) :
-          <h2 className="sidebar__author-title">
-            <Link className="sidebar__author-title-link" to="/">{author.name}</Link>
+          <h2 className="sidebar__group-title">
+            <Link className="sidebar__group-title-link" to="/">{group.name}</Link>
           </h2>
         }
-        <p className="sidebar__author-subtitle">{subtitle}</p>
+        <p className="sidebar__group-subtitle">{subtitle}</p>
       </div>
     );
     /* eslint-enable jsx-a11y/img-redundant-alt*/
@@ -41,12 +41,12 @@ class Sidebar extends React.Component {
     return (
       <div className="sidebar">
         <div className="sidebar__inner">
-          <div className="sidebar__author">
-            {authorBlock}
+          <div className="sidebar__group">
+            {groupBlock}
           </div>
           <div>
             <Menu data={menu} />
-            <Links data={author} />
+            <Links data={group} />
             <p className="sidebar__copyright">
               {copyright}
             </p>
@@ -62,7 +62,7 @@ Sidebar.propTypes = {
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
         subtitle: PropTypes.string.isRequired,
-        author: PropTypes.object.isRequired,
+        group: PropTypes.object.isRequired,
         copyright: PropTypes.string.isRequired,
         menu: PropTypes.array.isRequired
       })

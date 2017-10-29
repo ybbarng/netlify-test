@@ -6,8 +6,9 @@ import './style.scss';
 
 class PostTemplateDetails extends React.Component {
   render() {
-    const { subtitle, author } = this.props.data.site.siteMetadata;
+    const { subtitle } = this.props.data.site.siteMetadata;
     const post = this.props.data.markdownRemark;
+    const { author } = post;
     const tags = post.fields.tagSlugs;
 
     const homeBlock = (
@@ -61,8 +62,7 @@ PostTemplateDetails.propTypes = {
   data: PropTypes.shape({
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
-        subtitle: PropTypes.string.isRequired,
-        author: PropTypes.object.isRequired
+        subtitle: PropTypes.string.isRequired
       })
     }),
     markdownRemark: PropTypes.object.isRequired

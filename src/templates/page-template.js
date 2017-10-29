@@ -52,7 +52,7 @@ export const pageQuery = graphql`
           label
           path
         }
-        author {
+        group {
           name
           email
           telegram
