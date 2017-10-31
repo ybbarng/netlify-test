@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import Link from 'gatsby-link';
-import Links from '../Links';
 import profilePic from '../../pages/photo.jpg';
 import './style.scss';
 
@@ -42,9 +41,6 @@ class Sidebar extends React.Component {
         <div className="sidebar__inner">
           <div className="sidebar__group">
             {groupBlock}
-          </div>
-          <div>
-            <Links data={group} />
           </div>
         </div>
       </div>

@@ -44,12 +44,6 @@ export const pageQuery = graphql`
         copyright
         group {
           name
-          email
-          telegram
-          twitter
-          github
-          rss
-          vk
         }
         authors {
           id

@@ -19,13 +19,7 @@ module.exports = {
       }
     ],
     group: {
-      name: '현지 & 용배',
-      email: '#',
-      telegram: '#',
-      twitter: '#',
-      github: '#',
-      rss: '#',
-      vk: '#'
+      name: '현지 & 용배'
     },
     authors: [
       {
