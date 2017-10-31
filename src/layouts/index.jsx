@@ -9,11 +9,11 @@ import './style.scss';
 class Layout extends React.Component {
   render() {
     const { children } = this.props;
-    const { menu, copyright } = this.props.data.site.siteMetadata;
+    const { title, menu, copyright } = this.props.data.site.siteMetadata;
 
     return (
       <div className="layout">
-        <Helmet defaultTitle="Blog by John Doe" />
+        <Helmet defaultTitle={title} />
         <Menu data={menu} />
         <div className="layout__body">
           {children()}
@@ -31,6 +31,7 @@ Layout.propTypes = {
   data: PropTypes.shape({
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
+        title: PropTypes.string.isRequired,
         menu: PropTypes.array.isRequired,
         copyright: PropTypes.string.isRequired
       })
@@ -42,6 +43,7 @@ export const pageQuery = graphql`
   query LayoutQuery {
     site {
       siteMetadata {
+        title
         menu {
           label
           path
