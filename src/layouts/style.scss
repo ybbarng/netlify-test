@@ -1,0 +1,15 @@
+@import "../assets/scss/variables";
+@import "../assets/scss/mixins";
+
+.layout {
+    &__body:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    &__copyright {
+        color: lighten($color-gray, 18%);
+        font-size: $typographic-small-font-size;
+        text-align: center;
+    }
+}
