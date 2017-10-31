@@ -46,7 +46,8 @@
     "gatsby-transformer-remark": "^1.7.1",
     "gatsby-transformer-sharp": "^1.6.1",
     "lodash": "^4.17.2",
-    "typeface-roboto": "latest"
+    "typeface-roboto": "latest",
+    "url-loader": "^0.6.2"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
