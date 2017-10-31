@@ -59,10 +59,6 @@ export const pageQuery = graphql`
         title
         subtitle
         copyright
-        menu {
-          label
-          path
-        }
         group {
           name
           email
