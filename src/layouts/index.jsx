@@ -4,17 +4,23 @@ import Helmet from 'react-helmet';
 import 'typeface-roboto';
 import Menu from '../components/Menu';
 import '../assets/scss/init.scss';
+import './style.scss';
 
 class Layout extends React.Component {
   render() {
     const { children } = this.props;
-    const { menu } = this.props.data.site.siteMetadata;
+    const { menu, copyright } = this.props.data.site.siteMetadata;
 
     return (
       <div className="layout">
         <Helmet defaultTitle="Blog by John Doe" />
         <Menu data={menu} />
-        {children()}
+        <div className="layout__body">
+          {children()}
+        </div>
+        <p className="layout__copyright">
+          {copyright}
+        </p>
       </div>
     );
   }
@@ -25,7 +31,8 @@ Layout.propTypes = {
   data: PropTypes.shape({
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
-        menu: PropTypes.array.isRequired
+        menu: PropTypes.array.isRequired,
+        copyright: PropTypes.string.isRequired
       })
     })
   })
@@ -39,6 +46,7 @@ export const pageQuery = graphql`
           label
           path
         }
+        copyright
       }
     }
   }

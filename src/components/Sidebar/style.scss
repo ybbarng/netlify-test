@@ -33,10 +33,6 @@
             @include margin-bottom(1);
         }
     }
-    &__copyright {
-        color: lighten($color-gray, 18%);
-        font-size: $typographic-small-font-size;
-    }
 }
 
 @include breakpoint-sm {
@@ -50,7 +46,7 @@
                 position: absolute;
                 content: "";
                 width: 1px;
-                height: 540px;
+                height: 400px;
                 top: 30px;
                 right: -10px;
                 bottom: 0;

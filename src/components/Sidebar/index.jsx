@@ -9,7 +9,7 @@ import './style.scss';
 class Sidebar extends React.Component {
   render() {
     const { location } = this.props;
-    const { group, subtitle, copyright } = this.props.data.site.siteMetadata;
+    const { group, subtitle } = this.props.data.site.siteMetadata;
     const isHomePage = get(location, 'pathname', '/') === '/';
 
     /* eslint-disable jsx-a11y/img-redundant-alt*/
@@ -45,9 +45,6 @@ class Sidebar extends React.Component {
           </div>
           <div>
             <Links data={group} />
-            <p className="sidebar__copyright">
-              {copyright}
-            </p>
           </div>
         </div>
       </div>
@@ -60,8 +57,7 @@ Sidebar.propTypes = {
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
         subtitle: PropTypes.string.isRequired,
-        group: PropTypes.object.isRequired,
-        copyright: PropTypes.string.isRequired
+        group: PropTypes.object.isRequired
       })
     })
   }),
