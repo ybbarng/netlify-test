@@ -12,12 +12,6 @@ class PostTemplateDetails extends React.Component {
     const { author } = post;
     const tags = post.fields.tagSlugs;
 
-    const homeBlock = (
-      <div>
-        <Link className="post-single__home-button" to="/">All Articles</Link>
-      </div>
-    );
-
     const tagsBlock = (
       <div className="post-single__tags">
         <ul className="post-single__tags-list">
@@ -40,7 +34,6 @@ class PostTemplateDetails extends React.Component {
 
     return (
       <div>
-        {homeBlock}
         <div className="post-single">
           <div className="post-single__inner">
             <h1 className="post-single__title">{post.frontmatter.title}</h1>
