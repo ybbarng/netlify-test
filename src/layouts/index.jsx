@@ -2,20 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import 'typeface-roboto';
-import Menu from '../components/Menu';
+import Header from '../components/Header';
 import '../assets/scss/init.scss';
 import './style.scss';
 
 class Layout extends React.Component {
   render() {
     const { children } = this.props;
-    const { title, menu, copyright } = this.props.data.site.siteMetadata;
+    const { title, copyright, menu } = this.props.data.site.siteMetadata;
 
     return (
       <div>
-        <div className="header">
-          <Menu data={menu} />
-        </div>
+        <Header data={menu} />
         <div className="layout">
           <Helmet defaultTitle={title} />
           <div className="layout__body">

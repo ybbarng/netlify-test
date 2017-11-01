@@ -1,15 +1,6 @@
 @import "../assets/scss/variables";
 @import "../assets/scss/mixins";
 
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: $header-height;
-    background: $color-white;
-    z-index: 100;
-}
 .layout {
     margin-top: $header-height;
     &__body:after {
