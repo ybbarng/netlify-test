@@ -19,8 +19,8 @@
                 color: $typographic-base-font-color;
                 font-weight: 400;
                 padding: 0 1em;
-                height: 45px;
-                line-height: 45px;
+                height: $header-height;
+                line-height: $header-height;
                 display: block;
                 -webkit-box-sizing: border-box;
                 -moz-box-sizing: border-box;
@@ -41,8 +41,11 @@
         background: $color-gray-border;
         background: linear-gradient(to bottom, $color-gray-border 0%, $color-gray-border 48%, $color-white 100%);
         position: absolute;
+        left: 0;
+        right: 0;
+        width: 100%;
+        lost-center: $layout-width;
         content: "";
         height: 1px;
-        width: 100%;
     }
 }

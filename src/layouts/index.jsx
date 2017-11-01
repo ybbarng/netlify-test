@@ -12,15 +12,19 @@ class Layout extends React.Component {
     const { title, menu, copyright } = this.props.data.site.siteMetadata;
 
     return (
-      <div className="layout">
-        <Helmet defaultTitle={title} />
-        <Menu data={menu} />
-        <div className="layout__body">
-          {children()}
+      <div>
+        <div className="header">
+          <Menu data={menu} />
         </div>
-        <p className="layout__copyright">
-          {copyright}
-        </p>
+        <div className="layout">
+          <Helmet defaultTitle={title} />
+          <div className="layout__body">
+            {children()}
+          </div>
+          <p className="layout__copyright">
+            {copyright}
+          </p>
+        </div>
       </div>
     );
   }
