@@ -4,6 +4,7 @@ module.exports = {
     title: '현지와 용배의 블로그',
     subtitle: '현지와 용배의 블로그',
     copyright: '© 2017 livvy & ybbarng All rights reserved.',
+    disqusShortname: '',
     menu: [
       {
         label: 'Articles',
