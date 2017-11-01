@@ -5,7 +5,7 @@ authorId: livvy
 layout: post
 draft: false
 path: "/posts/the-origins-of-social-stationery-lettering"
-category: "Design Culture"
+category: "Data Science"
 tags:
   - "Typefaces"
   - "Lettering"

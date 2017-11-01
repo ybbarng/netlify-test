@@ -5,7 +5,7 @@ authorId: ybbarng
 layout: post
 draft: false
 path: /posts/test-netlify-cms
-category: "Test"
+category: "Dev"
 tags:
   - "Test"
   - "Netlify CMS"

@@ -5,7 +5,7 @@ authorId: ybbarng
 layout: post
 draft: false
 path: "/posts/a-brief-history-of-typography/"
-category: "Design Inspiration"
+category: "Dev"
 tags:
   - "Linotype"
   - "Monotype"

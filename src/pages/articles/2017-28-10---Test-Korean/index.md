@@ -5,7 +5,7 @@ authorId: ybbarng
 layout: post
 draft: false
 path: "/test-korean"
-category: "테스트"
+category: "Dev"
 tags:
   - "Test"
   - "Korean"

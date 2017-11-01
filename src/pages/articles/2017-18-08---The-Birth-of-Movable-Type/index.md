@@ -5,7 +5,7 @@ authorId: ybbarng
 layout: post
 draft: false
 path: "/posts/the-birth-of-movable-type/"
-category: "Typography"
+category: "Trip"
 tags:
   - "Open source"
   - "Gatsby"

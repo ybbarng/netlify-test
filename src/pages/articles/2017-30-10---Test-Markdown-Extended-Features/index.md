@@ -5,7 +5,7 @@ authorId: ybbarng
 layout: post
 draft: false
 path: "/posts/test-markdown-extended-features"
-category: "테스트"
+category: "Dev"
 tags:
   - "Test"
   - "Markdown"

@@ -7,16 +7,24 @@ module.exports = {
     disqusShortname: 'blog-of-livvy-and-ybbarng',
     menu: [
       {
-        label: 'Articles',
+        label: 'Home',
         path: '/'
+      },
+      {
+        label: 'Trip',
+        path: '/categories/trip'
+      },
+      {
+        label: 'Data Science',
+        path: '/categories/data-science'
+      },
+      {
+        label: 'Dev',
+        path: '/categories/dev'
       },
       {
         label: 'About us',
         path: '/about-us/'
-      },
-      {
-        label: 'Contact us',
-        path: '/contact/'
       }
     ],
     group: {

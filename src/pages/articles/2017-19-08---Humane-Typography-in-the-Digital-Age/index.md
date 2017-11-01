@@ -5,7 +5,7 @@ authorId: ybbarng
 layout: post
 draft: false
 path: "/posts/humane-typography-in-the-digital-age/"
-category: "Typography"
+category: "Trip"
 tags:
   - "Design"
   - "Typography"

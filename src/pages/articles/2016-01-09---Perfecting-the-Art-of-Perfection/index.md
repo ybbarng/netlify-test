@@ -5,7 +5,7 @@ authorId: livvy
 layout: post
 draft: false
 path: "/posts/perfecting-the-art-of-perfection/"
-category: "Design Inspiration"
+category: "Trip"
 tags:
   - "Handwriting"
   - "Learning to write"
