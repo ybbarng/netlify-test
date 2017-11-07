@@ -13,7 +13,17 @@ $color-gray-border: lighten($color-base, 77%);
 $color-gray-bg: lighten($color-base, 79%);
 
 // Typographic
-$typographic-font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans);
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(https://fonts.googleapis.com/earlyaccess/notosansjp.css);
+$noto-sans: "Noto Sans";
+$noto-sans-kr: "Noto Sans KR";
+$noto-sans-jp: "Noto Sans JP";
+
+$base-font-family: Arial, sans-serif;
+$noto-font-family: $noto-sans, $noto-sans-jp, $noto-sans-kr;
+
+$typographic-font-family: $noto-font-family, $base-font-family;
 
 $typographic-root-font-size: 100;
 $typographic-base-font-size: 16px;
