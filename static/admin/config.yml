@@ -9,7 +9,7 @@ media_folder: "/src/pages/images"
 public_folder: "img"
 
 collections:
-  - name: "articles"
+  - name: "posts"
     label: "Article"
     folder: "src/pages/articles"
     create: true
@@ -17,7 +17,9 @@ collections:
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Author ID", name: "authorId", widget: "string"}
       - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
+      - {label: "Draft", name: "draft", widget: "boolean", default: False}
       - {label: "Path", name: "path", widget: "string"}
       - {label: "Category", name: "category", widget: "string"}
       - {label: "Tags", name: "tags", widget: "hidden", default: ""}
@@ -33,4 +35,5 @@ collections:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Layout", name: "layout", widget: "hidden", default: "page"}
       - {label: "Path", name: "path", widget: "string"}
+      - {label: "Author ID", name: "authorId", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
