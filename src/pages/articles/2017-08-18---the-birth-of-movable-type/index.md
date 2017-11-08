@@ -1,16 +1,20 @@
 ---
-title: "Johannes Gutenberg: The Birth of Movable Type"
+title: 'Johannes Gutenberg: The Birth of Movable Type'
 date: 2017-08-18T22:12:03.284Z
 authorId: ybbarng
 layout: post
 draft: false
-path: "/posts/the-birth-of-movable-type/"
-category: "Trip"
+path: /posts/the-birth-of-movable-type/
+category: Trip
 tags:
-  - "Open source"
-  - "Gatsby"
-  - "Typography"
-description: "German inventor Johannes Gutenberg developed a method of movable type and used it to create one of the western world’s first major printed books, the “Forty–Two–Line” Bible."
+  - Open source
+  - Gatsby
+  - Typography
+  - ColonTitle
+description: >-
+  German inventor Johannes Gutenberg developed a method of movable type and used
+  it to create one of the western world’s first major printed books, the
+  “Forty–Two–Line” Bible.
 ---
 
 German inventor Johannes Gutenberg developed a method of movable type and used it to create one of the western world’s first major printed books, the “Forty–Two–Line” Bible.
