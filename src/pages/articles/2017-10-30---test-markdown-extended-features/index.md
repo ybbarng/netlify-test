@@ -1,15 +1,18 @@
 ---
-title: "Test Markdown Extended Features"
+title: Test Markdown Extended Features
 date: 2017-10-30T15:43:28.622Z
 authorId: ybbarng
 layout: post
 draft: false
-path: "/posts/test-markdown-extended-features"
-category: "Dev"
+path: /posts/test-markdown-extended-features
+category: Dev
 tags:
-  - "Test"
-  - "Markdown"
-description: "Test other useful features such as mathjax, flow, sequence, table, footnotes, etc. Template is from [StackEdit](https://stackedit.io/editor)"
+  - Test
+  - Markdown
+  - Stackedit
+description: >-
+  Test other useful features such as mathjax, flow, sequence, table, footnotes,
+  etc. Template is from [StackEdit](https://stackedit.io/editor)
 ---
 
 Welcome to StackEdit!
