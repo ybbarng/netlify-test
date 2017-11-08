@@ -1,14 +1,12 @@
 ---
 title: 한글 테스트
-date: "2017-10-27T17:06:28.622Z"
-authorId: ybbarng
+date: 2017-11-08T15:13:00+09:00
 layout: post
-draft: false
-path: "/test-korean"
-category: "Dev"
+path: /test-korean
+category: Dev
 tags:
-  - "Test"
-  - "Korean"
+  - Test
+  - Korean
 description: 한글에도 어울리는 디자인인지 알아보기 위한 글
 ---
 
