@@ -1,6 +1,6 @@
 ---
 title: 日本語テスト
-date: "2017-11-07T14:24:30.612Z"
+date: 2017-11-07T14:24:30.612Z
 authorId: livvy
 layout: post
 draft: false

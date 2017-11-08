@@ -1,6 +1,6 @@
 ---
 title: "Test Markdown Extended Features"
-date: "2017-10-30T15:43:28.622Z"
+date: 2017-10-30T15:43:28.622Z
 authorId: ybbarng
 layout: post
 draft: false

@@ -1,6 +1,6 @@
 ---
 title: "Johannes Gutenberg: The Birth of Movable Type"
-date: "2017-08-18T22:12:03.284Z"
+date: 2017-08-18T22:12:03.284Z
 authorId: ybbarng
 layout: post
 draft: false
