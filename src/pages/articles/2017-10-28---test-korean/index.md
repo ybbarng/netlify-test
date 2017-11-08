@@ -1,7 +1,9 @@
 ---
 title: 한글 테스트
 date: 2017-11-08T15:13:00+09:00
+authorId: ybbarng
 layout: post
+draft: false
 path: /test-korean
 category: Dev
 tags:
