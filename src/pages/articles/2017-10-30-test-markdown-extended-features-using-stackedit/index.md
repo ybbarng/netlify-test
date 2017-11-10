@@ -1,10 +1,10 @@
 ---
-title: Test Markdown Extended Features
+title: Test Markdown Extended Features using StackEdit
 date: 2017-10-30T15:43:28.622Z
 authorId: ybbarng
 layout: post
 draft: false
-path: /posts/test-markdown-extended-features
+path: /posts/test-markdown-extended-features-using-stackedit
 category: Dev
 tags:
   - Test
