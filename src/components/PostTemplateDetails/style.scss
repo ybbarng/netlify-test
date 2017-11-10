@@ -19,6 +19,9 @@
         @include margin-bottom(0);
     }
     &__body {
+        max-width: $layout-post-single-width;
+        margin-left: auto;
+        margin-right: auto;
         & figure {
             @include margin-bottom(1);
             & blockquote {
@@ -45,7 +48,7 @@
             @include margin-bottom(1);
         }
         & :not(div) {
-            max-width: $layout-post-single-width;
+            max-width: 100%;
             margin-left: auto;
             margin-right: auto;
         }
