@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: ybbarng/netlify-test
+  repo: ybbarng/livvy.byb.kr
   branch: master # Branch to update (optional; defaults to master)
   base_url: https://blogauth.byb.kr
 
