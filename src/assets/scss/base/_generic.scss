@@ -108,10 +108,17 @@ strong {
 
 ul {
     list-style: square;
+}
+
+ul, ol {
     @include margin-bottom(1);
     & li {
         padding: 0 5px;
         margin-bottom: 10px;
+        & p {
+            margin: 0;
+            margin-bottom: 10px;
+        }
     }
 }
 
