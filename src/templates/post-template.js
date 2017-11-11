@@ -54,7 +54,7 @@ export const pageQuery = graphql`
         authors {
           id
           name
-          twitter
+          about
         }
       }
     }

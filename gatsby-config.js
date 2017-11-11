@@ -34,6 +34,7 @@ module.exports = {
       {
         id: 'livvy',
         name: '현지',
+        about: '/about-livvy/',
         email: '#',
         telegram: '#',
         twitter: '#',
@@ -44,6 +45,7 @@ module.exports = {
       {
         id: 'ybbarng',
         name: '용배',
+        about: '/about-ybbarng/',
         email: '#',
         telegram: '#',
         twitter: '#',

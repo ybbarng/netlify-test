@@ -38,18 +38,21 @@ class PostTemplateDetails extends React.Component {
           <div className="post-single__inner">
             <h1 className="post-single__title">{post.frontmatter.title}</h1>
             <div className="post-single__body" dangerouslySetInnerHTML={{ __html: post.html }} />
-            <div className="post-single__date">
-              <em>Published {moment(post.frontmatter.date).format('D MMM YYYY')}</em>
-            </div>
           </div>
           <div className="post-single__footer">
-            {tagsBlock}
-            <hr />
+            <p className="post-single__footer-text">
+              <em className="post-single__date">
+                {moment(post.frontmatter.date).format('YYYY년 MM월 DD일')}에&nbsp;
+              <a href={author.about}>
+                <strong>{author.name}</strong>
+              </a>
+              가 씀.
+              </em>
+            </p>
+              {tagsBlock}
+              <hr />
             <p className="post-single__footer-text">
               {subtitle}
-              <a href={author.twitter} target="_blank" rel="noopener noreferrer">
-                <br /> <strong>{author.name}</strong> on Twitter
-              </a>
             </p>
             {commentsBlock}
           </div>
