@@ -11,6 +11,7 @@ class PostTemplateDetails extends React.Component {
     const post = this.props.data.markdownRemark;
     const { author } = post;
     const tags = post.fields.tagSlugs;
+    const authorSlug = post.fields.authorSlug;
 
     const tagsBlock = (
       <div className="post-single__tags">
@@ -43,14 +44,14 @@ class PostTemplateDetails extends React.Component {
             <p className="post-single__footer-text">
               <em className="post-single__date">
                 {moment(post.frontmatter.date).format('YYYY년 MM월 DD일')}에&nbsp;
-              <a href={author.about}>
+              <Link to={authorSlug}>
                 <strong>{author.name}</strong>
-              </a>
+              </Link>
               가 씀.
               </em>
             </p>
-              {tagsBlock}
-              <hr />
+            {tagsBlock}
+            <hr />
             <p className="post-single__footer-text">
               {subtitle}
             </p>

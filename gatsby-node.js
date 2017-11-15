@@ -5,6 +5,11 @@ const lost = require('lost');
 const pxtorem = require('postcss-pxtorem');
 const slash = require('slash');
 
+const getPath = (type, key) => `/${type}/${_.kebabCase(key)}/`;
+const getAuthorPath = author => getPath('author', author);
+const getCategoryPath = category => getPath('category', category);
+const getTagPath = tag => getPath('tag', tag);
+
 exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators;
 
@@ -13,6 +18,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     const pageTemplate = path.resolve('./src/templates/page-template.js');
     const tagTemplate = path.resolve('./src/templates/tag-template.js');
     const categoryTemplate = path.resolve('./src/templates/category-template.js');
+    const authorTemplate = path.resolve('./src/templates/author-template.js');
 
     graphql(
       `
@@ -30,6 +36,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
               tags
               layout
               category
+              authorId
             }
           }
         }
@@ -67,7 +74,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
           tags = _.uniq(tags);
           _.each(tags, (tag) => {
-            const tagPath = `/tags/${_.kebabCase(tag)}/`;
+            const tagPath = getTagPath(tag);
             createPage({
               path: tagPath,
               component: tagTemplate,
@@ -84,12 +91,29 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
           categories = _.uniq(categories);
           _.each(categories, (category) => {
-            const categoryPath = `/categories/${_.kebabCase(category)}/`;
+            const categoryPath = getCategoryPath(category);
             createPage({
               path: categoryPath,
               component: categoryTemplate,
               context: {
                 category
+              }
+            });
+          });
+
+          let authorIds = [];
+          if (_.get(edge, 'node.frontmatter.authorId')) {
+            authorIds = authorIds.concat(edge.node.frontmatter.authorId);
+          }
+
+          authorIds = _.uniq(authorIds);
+          _.each(authorIds, (authorId) => {
+            const authorPath = getAuthorPath(authorId);
+            createPage({
+              path: authorPath,
+              component: authorTemplate,
+              context: {
+                authorId
               }
             });
           });
@@ -124,15 +148,18 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
     });
 
     if (node.frontmatter.tags) {
-      const tagSlugs = node.frontmatter.tags.map(
-        tag => `/tags/${_.kebabCase(tag)}/`
-      );
+      const tagSlugs = node.frontmatter.tags.map(getTagPath);
       createNodeField({ node, name: 'tagSlugs', value: tagSlugs });
     }
 
-    if (typeof node.frontmatter.category !== 'undefined') {
-      const categorySlug = `/categories/${_.kebabCase(node.frontmatter.category)}/`;
+    if (node.frontmatter.category) {
+      const categorySlug = getCategoryPath(node.frontmatter.category);
       createNodeField({ node, name: 'categorySlug', value: categorySlug });
+    }
+
+    if (node.frontmatter.authorId) {
+      const authorSlug = getAuthorPath(node.frontmatter.authorId);
+      createNodeField({ node, name: 'authorSlug', value: authorSlug });
     }
   }
 };
