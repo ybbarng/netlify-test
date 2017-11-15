@@ -11,20 +11,16 @@ module.exports = {
         path: '/'
       },
       {
-        label: 'Trip',
-        path: '/categories/trip'
+        label: '잡담',
+        path: '/categories/smalltalk'
       },
       {
-        label: 'Data Science',
-        path: '/categories/data-science'
+        label: '공부',
+        path: '/categories/study'
       },
       {
-        label: 'Dev',
-        path: '/categories/dev'
-      },
-      {
-        label: 'About us',
-        path: '/about-us/'
+        label: '같이 놀기',
+        path: '/categories/date'
       }
     ],
     group: {
