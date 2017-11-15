@@ -31,23 +31,23 @@ module.exports = {
         id: 'livvy',
         name: '현지',
         about: '/about-livvy/',
-        email: '#',
-        telegram: '#',
-        twitter: '#',
         github: '#',
+        email: '#',
+        keybase: '#',
+        facebook: '#',
+        twitter: '#',
         rss: '#',
-        vk: '#'
       },
       {
         id: 'ybbarng',
         name: '용배',
         about: '/about-ybbarng/',
-        email: '#',
-        telegram: '#',
-        twitter: '#',
         github: '#',
+        email: '#',
+        keybase: '#',
+        facebook: '#',
+        twitter: '#',
         rss: '#',
-        vk: '#'
       }
     ]
   },
