@@ -8,6 +8,14 @@ publish_mode: editorial_workflow
 media_folder: "/src/pages/images"
 public_folder: "img"
 
+accounts:
+  - email: ybbarng@gmail.com
+    auto_fields:
+        authorId: ybbarng
+  - email: bluenoche2@gmail.com
+    auto_fields:
+        authorId: livvy
+
 collections:
   - name: "posts"
     label: "Article"
