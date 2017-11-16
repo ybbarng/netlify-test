@@ -77,6 +77,7 @@ export const pageQuery = graphql`
         node {
           fields {
             slug
+            authorSlug
             categorySlug
           }
           frontmatter {

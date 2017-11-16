@@ -13,8 +13,8 @@ class Post extends React.Component {
       description: data.node.frontmatter.description,
       date: data.node.frontmatter.date,
       category: data.node.frontmatter.category,
+      authorSlug: data.node.fields.authorSlug,
       categorySlug: data.node.fields.categorySlug,
-      authorId: data.node.frontmatter.authorId,
       author: data.node.author
     };
 
@@ -31,7 +31,9 @@ class Post extends React.Component {
             </Link>
           </span>
           <span className="post__meta-author">
-            <a href={`/about-${post.authorId}/`} className="post__meta-author-link">{post.author.name}</a>
+            <Link to={post.authorSlug} className="post__meta-author-link">
+              {post.author.name}
+            </Link>
           </span>
         </div>
         <h2 className="post__title">

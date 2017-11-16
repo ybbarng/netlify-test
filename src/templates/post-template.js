@@ -62,6 +62,7 @@ export const pageQuery = graphql`
       id
       html
       fields {
+        authorSlug
         tagSlugs
       }
       frontmatter {

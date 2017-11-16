@@ -1,7 +1,7 @@
 @import "../../assets/scss/variables";
 @import "../../assets/scss/mixins";
 
-.header {
+.header-wrapper {
     position: fixed;
     top: 0;
     left: 0;
@@ -9,4 +9,32 @@
     height: $header-height;
     background: $color-white;
     z-index: 100;
+    .header {
+        position: relative;
+        height: $header-height;
+        width: $layout-width;
+        margin: 0 auto;
+        & .login {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50px;
+            height: $header-height;
+            line-height: $header-height;
+            text-align: center;
+            font-size: $typographic-base-font-size;
+            color: $typographic-base-font-color;
+            font-weight: 400;
+            border: 0;
+            &:hover,
+            &:focus {
+                color: $color-primary;
+                border-bottom: 1px solid $color-primary;
+            }
+            &--active {
+                color: $color-base;
+                border-bottom: 1px solid $color-base;
+            }
+        }
+    }
 }
