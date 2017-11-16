@@ -7,11 +7,20 @@ import '../../assets/fonts/fontello-3d8dd48a/css/fontello.css';
 class Header extends React.Component {
   render() {
     const menu = this.props.data;
+
+    function moveToAdmin() {
+      if (typeof window !== 'undefined') {
+        // To avoid un-def error on 'window'
+        global.window.location = '/admin/';
+      }
+    }
     return (
       <div className="header-wrapper">
         <div className="header">
           <Menu data={menu} />
-          <a className="login" href="/admin/"><i className="icon-login" /></a>
+          {/* Lint error: Links must not point to "#". Use a more descriptive href or
+            use a button instead. (jsx-a11y/href-no-hash) */}
+          <a className="login" onClick={moveToAdmin} href="#" title="로그인"><i className="icon-login" /></a>
         </div>
       </div>
     );
