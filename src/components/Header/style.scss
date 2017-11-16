@@ -22,16 +22,18 @@
             height: $header-height;
             line-height: $header-height;
             text-align: center;
+            font-size: $typographic-base-font-size;
+            color: $typographic-base-font-color;
+            font-weight: 400;
             border: 0;
-            & i {
-                font-size: 20px;
-                color: lighten($color-base, 20%);
-            }
             &:hover,
             &:focus {
-                & i {
-                    color: $color-base;
-                }
+                color: $color-primary;
+                border-bottom: 1px solid $color-primary;
+            }
+            &--active {
+                color: $color-base;
+                border-bottom: 1px solid $color-base;
             }
         }
     }

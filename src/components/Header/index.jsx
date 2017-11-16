@@ -20,7 +20,7 @@ class Header extends React.Component {
           <Menu data={menu} />
           {/* Lint error: Links must not point to "#". Use a more descriptive href or
             use a button instead. (jsx-a11y/href-no-hash) */}
-          <a className="login" onClick={moveToAdmin} href="#" title="로그인"><i className="icon-login" /></a>
+          <a className="login" onClick={moveToAdmin} href="#" title="로그인">Login</a>
         </div>
       </div>
     );
