@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    url: 'https://ybbarng.netlify.com',
+    url: 'https://livvy.byb.kr',
     title: '현지와 용배의 블로그',
     subtitle: '현지와 용배의 블로그',
     copyright: '© 2017 livvy & ybbarng All rights reserved.',
@@ -36,7 +36,7 @@ module.exports = {
         keybase: '#',
         facebook: '#',
         twitter: '#',
-        rss: '#',
+        rss: '#'
       },
       {
         id: 'ybbarng',
@@ -47,7 +47,7 @@ module.exports = {
         keybase: '#',
         facebook: '#',
         twitter: '#',
-        rss: '#',
+        rss: '#'
       }
     ]
   },

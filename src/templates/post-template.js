@@ -64,12 +64,14 @@ export const pageQuery = graphql`
       fields {
         authorSlug
         tagSlugs
+        slug
       }
       frontmatter {
         title
         tags
         date
         authorId
+        category
         description
       }
     }
