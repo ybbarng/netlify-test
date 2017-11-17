@@ -12,15 +12,15 @@ module.exports = {
       },
       {
         label: '잡담',
-        path: '/categories/smalltalk'
+        path: '/category/smalltalk'
       },
       {
         label: '공부',
-        path: '/categories/study'
+        path: '/category/study'
       },
       {
         label: '같이 놀기',
-        path: '/categories/date'
+        path: '/category/date'
       }
     ],
     group: {
