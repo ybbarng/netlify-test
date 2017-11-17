@@ -18,7 +18,6 @@ class Sidebar extends React.Component {
           <img
             src={profilePic}
             className="sidebar__group-photo"
-            width="75" height="75"
             alt={group.name}
           />
         </Link>
