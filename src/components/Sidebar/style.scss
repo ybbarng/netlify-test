@@ -10,9 +10,11 @@
     &__group {
         &-photo {
             display: inline-block;
+            width: 145px;
+            height: 257px;
             margin-bottom: 0;
-            border-radius: 50%;
             background-clip: padding-box;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
         }
         &-title {
             font-size: $typographic-base-font-size * 1.125;
