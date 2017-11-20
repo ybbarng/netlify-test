@@ -28,14 +28,13 @@ class Disqus extends Component {
       return null;
     }
     const post = postNode.frontmatter;
-    const url = config.siteMetadata.url + postNode.fields.slug;
+    const url = config.siteMetadata.url + encodeURI(postNode.fields.slug);
     return (
       <ReactDisqusComments
         shortname={config.siteMetadata.disqusShortname}
-        identifier={post.title}
+        identifier={post.date}
         title={post.title}
         url={url}
-        category_id={post.category}
         onNewComment={this.notifyAboutComment}
       />
     );
