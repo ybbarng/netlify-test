@@ -1,7 +1,7 @@
 {
-  "version": "2.0.1",
-  "name": "gatsby-starter-lumen",
-  "description": "Simple starter for Gatsby",
+  "version": "1.0.0",
+  "name": "livvy.byb.kr",
+  "description": "A blog of livvy and ybbarng based on gatsby-starter-lumen",
   "main": "n/a",
   "scripts": {
     "develop": "gatsby develop",
@@ -12,13 +12,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "gatsby build --prefix-links && gh-pages -d public"
   },
-  "repository": "git+https://github.com/alxshelepenok/gatsby-starter-lumen.git",
+  "repository": "git+https://github.com/ybbarng/livvy.byb.kr.git",
   "keywords": [
     "gatsby",
     "blog",
-    "react"
+    "react",
+    "netlify-cms",
+    "multi-authors"
   ],
-  "author": "Alexander Shelepenok <alxshelepenok@gmail.com>",
+  "author": "Bang Yongbae <ybbarng@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "gatsby": "^1.9.82",
