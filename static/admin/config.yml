@@ -4,8 +4,10 @@ backend:
   branch: pages # Branch to update (optional; defaults to master)
   base_url: https://blogauth.byb.kr
 
-publish_mode: simple
+display_url: https://livvy.byb.kr
 media_folder: "/src/pages/images"
+
+publish_mode: simple
 public_folder: "img"
 
 accounts:
@@ -16,9 +18,11 @@ accounts:
     auto_fields:
         authorId: livvy
 
-collections:
-  - name: "posts"
-    label: "Article"
+collections: # A list of collections the CMS should be able to edit
+  - name: "posts" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "Article" # Used in the UI, ie.: "New Article"
+    description: >
+      Articles
     folder: "src/pages/articles"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
