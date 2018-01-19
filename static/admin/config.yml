@@ -24,16 +24,17 @@ collections: # A list of collections the CMS should be able to edit
     description: >
       Articles
     folder: "src/pages/articles"
-    create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
+    create: true # Allow users to create new documents in this collection
+    fields: # The fields each document in this collection have
+      - {label: "Title", name: "title", widget: "string", tagname: "h1"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Cover Image", name: "image", widget: "image", required: false, tagname: ""}
       - {label: "Author ID", name: "authorId", widget: "string"}
       - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
       - {label: "Draft", name: "draft", widget: "boolean", default: False}
       - {label: "Path", name: "path", widget: "string"}
-      - {label: "Category", name: "category", widget: "select", options: ['smalltalk', 'study', 'date']}
+      - {label: "Category", name: "category", widget: "select", options: ['test', 'test2']}
       - {label: "Tags", name: "tags", widget: "list", default: ""}
       - {label: "Description", name: "description", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
