@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
-import kebabCase from 'lodash/kebabCase';
 import Sidebar from '../components/Sidebar';
+import { getPath } from '../utils';
+import Category from '../models/category';
 
 class CategoriesRoute extends React.Component {
   render() {
     const { title } = this.props.data.site.siteMetadata;
-    const categories = this.props.data.allMarkdownRemark.group;
+    const categories = this.props.data.allContentfulCategory.edges;
 
     return (
       <div>
@@ -22,9 +23,9 @@ class CategoriesRoute extends React.Component {
                 <div className="categories">
                   <ul className="categories__list">
                     {categories.map(category =>
-                      <li key={category.fieldValue} className="categories__list-item">
-                        <Link to={`/categories/${kebabCase(category.fieldValue)}/`} className="categories__list-item-link">
-                          {category.fieldValue} ({category.totalCount})
+                      <li key={category.node.name} className="categories__list-item">
+                        <Link to={getPath(Category, `/${category.node.slug}/`)} className="categories__list-item-link">
+                          {category.node.name} ({category.node.post ? category.node.post.length : 0})
                         </Link>
                       </li>
                     )}
@@ -46,8 +47,8 @@ CategoriesRoute.propTypes = {
         title: PropTypes.string.isRequired
       })
     }),
-    allMarkdownRemark: PropTypes.shape({
-      group: PropTypes.array.isRequired
+    allContentfulCategory: PropTypes.shape({
+      edges: PropTypes.array.isRequired
     })
   })
 };
@@ -55,7 +56,7 @@ CategoriesRoute.propTypes = {
 export default CategoriesRoute;
 
 export const pageQuery = graphql`
-  query CategoryesQuery {
+  query CategoriesQuery {
     site {
       siteMetadata {
         title
@@ -66,13 +67,15 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(
-      limit: 2000
-      filter: { frontmatter: { layout: { eq: "post" }, draft: { ne: true } } }
-    ) {
-      group(field: frontmatter___category) {
-        fieldValue
-        totalCount
+    allContentfulCategory (limit: 2000) {
+      edges {
+        node {
+          name
+          slug
+          post {
+            id
+          }
+        }
       }
     }
   }

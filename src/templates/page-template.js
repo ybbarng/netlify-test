@@ -6,19 +6,17 @@ import PageTemplateDetails from '../components/PageTemplateDetails';
 class PageTemplate extends React.Component {
   render() {
     const { title, subtitle } = this.props.data.site.siteMetadata;
-    const page = this.props.data.markdownRemark;
+    const page = this.props.data.contentfulPage;
 
-    let description;
-    if (page.frontmatter.description !== null) {
-      description = page.frontmatter.description;
-    } else {
-      description = subtitle;
+    let description = subtitle;
+    if (page.description !== null) {
+      description = page.description.description;
     }
 
     return (
       <div>
         <Helmet>
-          <title>{`${page.frontmatter.title} - ${title}`}</title>
+          <title>{`${page.title} - ${title}`}</title>
           <meta name="description" content={description} />
         </Helmet>
         <PageTemplateDetails {...this.props} />
@@ -35,14 +33,16 @@ PageTemplate.propTypes = {
         subtitle: PropTypes.string.isRequired
       })
     }),
-    markdownRemark: PropTypes.object.isRequired
+    contentfulPage: PropTypes.shape({
+      title: PropTypes.string.isRequired
+    })
   })
 };
 
 export default PageTemplate;
 
 export const pageQuery = graphql`
-  query PageBySlug($slug: String!) {
+  query PageBySlug($id: String!) {
     site {
       siteMetadata {
         title
@@ -53,13 +53,15 @@ export const pageQuery = graphql`
         }
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      html
-      frontmatter {
-        title
-        date
+    contentfulPage (id: { eq: $id }) {
+      title
+      description {
         description
+      }
+      body {
+        childMarkdownRemark {
+          html
+        }
       }
     }
   }

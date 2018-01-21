@@ -7,11 +7,11 @@ import CategoryTemplateDetails from '../components/CategoryTemplateDetails';
 class CategoryTemplate extends React.Component {
   render() {
     const { title } = this.props.data.site.siteMetadata;
-    const { category } = this.props.pathContext;
+    const { name } = this.props.data.contentfulCategory;
 
     return (
       <div>
-        <Helmet title={`${category} - ${title}`} />
+        <Helmet title={`${name} - ${title}`} />
         <Sidebar {...this.props} />
         <CategoryTemplateDetails {...this.props} />
       </div>
@@ -26,17 +26,17 @@ CategoryTemplate.propTypes = {
         title: PropTypes.string.isRequired,
         authors: PropTypes.array.isRequired
       })
+    }),
+    contentfulCategory: PropTypes.shape({
+      name: PropTypes.string.isRequired
     })
-  }),
-  pathContext: PropTypes.shape({
-    category: PropTypes.string.isRequired
   })
 };
 
 export default CategoryTemplate;
 
 export const pageQuery = graphql`
-  query CategoryPage($category: String) {
+  query CategoryPage($id: String!) {
     site {
       siteMetadata {
         title
@@ -51,23 +51,26 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(
-        limit: 1000,
-        filter: { frontmatter: { category: { eq: $category }, layout: { eq: "post" }, draft: { ne: true } } },
-        sort: { order: DESC, fields: [frontmatter___date] }
-      ){
-      edges {
-        node {
-          fields {
-            slug
-            categorySlug
-          }
-          frontmatter {
-            title
-            date
-            authorId
-            category
-            description
+    contentfulCategory (id: {eq: $id }) {
+      name
+      slug
+      post {
+        id
+        title
+        slug
+        author {
+          name
+          slug
+        }
+        datetime
+        category {
+          id
+          name
+          slug
+        }
+        description {
+          childMarkdownRemark {
+            html
           }
         }
       }

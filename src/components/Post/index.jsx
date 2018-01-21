@@ -3,44 +3,46 @@ import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import moment from 'moment';
 import './style.scss';
+import { getPath } from '../../utils';
+import Category from '../../models/category';
+import Author from '../../models/author';
+import PostModel from '../../models/post';
 
 class Post extends React.Component {
   render() {
     const data = this.props.data;
     const post = {
-      title: data.node.frontmatter.title,
-      slug: data.node.fields.slug,
-      description: data.node.frontmatter.description,
-      date: data.node.frontmatter.date,
-      category: data.node.frontmatter.category,
-      authorSlug: data.node.fields.authorSlug,
-      categorySlug: data.node.fields.categorySlug,
-      author: data.node.author
+      title: data.title,
+      slug: data.slug,
+      author: data.author,
+      datetime: data.datetime,
+      category: data.category,
+      description: data.description.childMarkdownRemark.html
     };
 
     return (
       <div className="post">
         <div className="post__meta">
-          <time className="post__meta-time" dateTime={moment(post.date).format('MMMM D, YYYY')}>
-            {moment(post.date).format('MMMM YYYY')}
+          <time className="post__meta-time" dateTime={moment(post.datetime).format('MMMM D, YYYY')}>
+            {moment(post.datetime).format('MMMM YYYY')}
           </time>
           <span className="post__meta-divider" />
-          <span className="post__meta-category" key={post.categorySlug}>
-            <Link to={post.categorySlug} className="post__meta-category-link">
-              {post.category}
+          <span className="post__meta-category" key={post.category.id}>
+            <Link to={getPath(Category, post.category.slug)} className="post__meta-category-link">
+              {post.category.name}
             </Link>
           </span>
           <span className="post__meta-author">
-            <Link to={post.authorSlug} className="post__meta-author-link">
+            <Link to={getPath(Author, post.author.slug)} className="post__meta-author-link">
               {post.author.name}
             </Link>
           </span>
         </div>
         <h2 className="post__title">
-          <Link className="post__title-link" to={post.slug}>{post.title}</Link>
+          <Link className="post__title-link" to={getPath(PostModel, post.slug)}>{post.title}</Link>
         </h2>
-        <p className="post__description">{post.description}</p>
-        <Link className="post__readmore" to={post.slug}>Read</Link>
+        <div className="post__description" dangerouslySetInnerHTML={{ __html: post.description }} />
+        <Link className="post__readmore" to={getPath(PostModel, post.slug)}>Read</Link>
       </div>
     );
   }

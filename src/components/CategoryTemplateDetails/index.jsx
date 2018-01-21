@@ -1,28 +1,24 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'; import PropTypes from 'prop-types';
 import Post from '../Post';
 
 class CategoryTemplateDetails extends React.Component {
   render() {
     const items = [];
-    const { authors } = this.props.data.site.siteMetadata;
-    const category = this.props.pathContext.category;
-    const posts = this.props.data.allMarkdownRemark.edges;
-    posts.forEach((postData) => {
-      const post = postData;
-      post.node.author = authors.find(
-        authorData => authorData.id === post.node.frontmatter.authorId);
-      items.push(
-        <Post data={post} key={post.node.fields.slug} />
-      );
-    });
+    const category = this.props.data.contentfulCategory;
+    if (category.post) {
+      category.post.forEach((post) => {
+        items.push(
+          <Post data={post} key={post.id} />
+        );
+      });
+    }
 
     return (
       <div className="content">
         <div className="content__inner">
           <div className="page">
             <h1 className="page__title">
-              {category}
+              {category.name}
             </h1>
             <div className="page__body">
               {items}
@@ -36,17 +32,10 @@ class CategoryTemplateDetails extends React.Component {
 
 CategoryTemplateDetails.propTypes = {
   data: PropTypes.shape({
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        authors: PropTypes.array.isRequired
-      })
-    }),
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array.isRequired
+    contentfulCategory: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      post: PropTypes.object.isRequired
     })
-  }),
-  pathContext: PropTypes.shape({
-    category: PropTypes.string.isRequired
   })
 };
 
