@@ -3,14 +3,19 @@ This is a repository of a blog of me and my girl friend.
 
 ## Powered by
 * [Gatsby](https://github.com/gatsbyjs/gatsby)
+    * Blazing fast static site generator for React
 * [Gatsby Starter Lumen](https://github.com/alxshelepenok/gatsby-starter-lumen)
-* [Netlify-CMS](https://github.com/netlify/netlify-cms)
+    * Lumen is a minimal, lightweight and mobile-first starter for creating blogs uses [gatsby](https://github.com/gatsbyjs/gatsby)
+* [Netlify](https://www.netlify.com/)
+    * Write frontend code. Push it. We handle the rest.
+* [Contentful](https://www.contentful.com/)
+    * Contentful provides a content infrastructure that enables teams to power content in any digital product.
 
 
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2017 ybbarng
+Copyright (c) 2017-2018 ybbarng <ybbarng@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
