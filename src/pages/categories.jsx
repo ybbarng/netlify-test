@@ -9,6 +9,11 @@ import Category from '../models/category';
 class CategoriesRoute extends React.Component {
   render() {
     const { title } = this.props.data.site.siteMetadata;
+    // Contentful에 Locale을 추가했을 때, allContentfulCategory 대신에
+    // 번역의 contentCategory가 오는 버그에 대한 workaround
+    if (!this.props.data.allContentfulCategory) {
+      return (null);
+    }
     const categories = this.props.data.allContentfulCategory.edges;
 
     return (

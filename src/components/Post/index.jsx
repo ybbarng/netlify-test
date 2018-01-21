@@ -19,6 +19,11 @@ class Post extends React.Component {
       category: data.category,
       description: data.description.childMarkdownRemark.html
     };
+    // Contentful에 Locale을 추가했을 때, 이 값들이 null인 것들이 목록에
+    // 보이는 버그에 대한 workaround
+    if (!post.title || !post.slug || !post.author || !post.category) {
+      return (null);
+    }
 
     return (
       <div className="post">
