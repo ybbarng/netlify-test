@@ -7,16 +7,15 @@ import Sidebar from '../components/Sidebar';
 class IndexRoute extends React.Component {
   render() {
     const items = [];
-    const { title, subtitle, authors } = this.props.data.site.siteMetadata;
-    const posts = this.props.data.allMarkdownRemark.edges;
-    posts.forEach((postData) => {
-      const post = postData;
-      post.node.author = authors.find(
-        authorData => authorData.id === post.node.frontmatter.authorId);
-      items.push(
-        <Post data={post} key={post.node.fields.slug} />
-      );
-    });
+    const { title, subtitle } = this.props.data.site.siteMetadata;
+    const posts = this.props.data.allContentfulPost.edges;
+    if (posts) {
+      posts.forEach((post) => {
+        items.push(
+          <Post data={post.node} key={post.node.id} />
+        );
+      });
+    }
 
     return (
       <div>
@@ -44,7 +43,11 @@ IndexRoute.propTypes = {
         authors: PropTypes.array.isRequired
       })
     }),
-    allMarkdownRemark: PropTypes.shape({
+    allContentfulAuthor: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired
+    }),
+    allContentfulPost: PropTypes.shape({
       edges: PropTypes.array.isRequired
     })
   })
@@ -62,30 +65,39 @@ export const pageQuery = graphql`
         group {
           name
         }
-        authors {
-          id
+      }
+    }
+    allContentfulAuthor {
+      edges {
+        node {
           name
+          slug
         }
       }
     }
-    allMarkdownRemark(
-        limit: 1000,
-        filter: { frontmatter: { layout: { eq: "post" }, draft: { ne: true } } },
-        sort: { order: DESC, fields: [frontmatter___date] }
-      ){
+    allContentfulPost (
+      limit: 1000,
+      sort: { order: DESC, fields: [datetime] }
+    ) {
       edges {
         node {
-          fields {
+          id
+          title
+          slug
+          author {
+            name
             slug
-            authorSlug
-            categorySlug
           }
-          frontmatter {
-            title
-            date
-            authorId
-            category
-            description
+          datetime
+          category {
+            id
+            name
+            slug
+          }
+          description {
+            childMarkdownRemark {
+              html
+            }
           }
         }
       }

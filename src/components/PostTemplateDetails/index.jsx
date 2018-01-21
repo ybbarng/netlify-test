@@ -4,22 +4,23 @@ import Link from 'gatsby-link';
 import moment from 'moment';
 import Disqus from '../Disqus/Disqus';
 import './style.scss';
+import { getPath } from '../../utils';
+import Author from '../../models/author';
+import Tag from '../../models/tag';
 
 class PostTemplateDetails extends React.Component {
   render() {
     const { subtitle } = this.props.data.site.siteMetadata;
-    const post = this.props.data.markdownRemark;
-    const { author } = post;
-    const tags = post.fields.tagSlugs;
-    const authorSlug = post.fields.authorSlug;
+    const post = this.props.data.contentfulPost;
+    const { author, tags } = post;
 
     const tagsBlock = (
       <div className="post-single__tags">
         <ul className="post-single__tags-list">
-          {tags && tags.map((tag, i) =>
+          {tags && tags.map(tag =>
             <li className="post-single__tags-list-item" key={tag}>
-              <Link to={tag} className="post-single__tags-list-item-link">
-                {post.frontmatter.tags[i]}
+              <Link to={getPath(Tag, tag)} className="post-single__tags-list-item-link">
+                {tag}
               </Link>
             </li>
           )}
@@ -29,7 +30,7 @@ class PostTemplateDetails extends React.Component {
 
     const commentsBlock = (
       <div>
-        <Disqus postNode={post} />
+        <Disqus post={post} />
       </div>
     );
 
@@ -37,14 +38,14 @@ class PostTemplateDetails extends React.Component {
       <div>
         <div className="post-single">
           <div className="post-single__inner">
-            <h1 className="post-single__title">{post.frontmatter.title}</h1>
-            <div className="post-single__body" dangerouslySetInnerHTML={{ __html: post.html }} />
+            <h1 className="post-single__title">{post.title}</h1>
+            <div className="post-single__body" dangerouslySetInnerHTML={{ __html: post.body.childMarkdownRemark.html }} />
           </div>
           <div className="post-single__footer">
             <p className="post-single__footer-text">
               <em className="post-single__date">
-                {moment(post.frontmatter.date).format('YYYY년 MM월 DD일')}에&nbsp;
-              <Link to={authorSlug}>
+                {moment(post.datetime).format('YYYY년 MM월 DD일')}에&nbsp;
+              <Link to={getPath(Author, author.slug)}>
                 <strong>{author.name}</strong>
               </Link>
               가 씀.
@@ -70,7 +71,7 @@ PostTemplateDetails.propTypes = {
         subtitle: PropTypes.string.isRequired
       })
     }),
-    markdownRemark: PropTypes.object.isRequired
+    contentfulPost: PropTypes.object.isRequired
   })
 };
 

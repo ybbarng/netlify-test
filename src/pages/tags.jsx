@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
-import kebabCase from 'lodash/kebabCase';
 import Sidebar from '../components/Sidebar';
+import { getPath } from '../utils';
+import Tag from '../models/tag';
 
 class TagsRoute extends React.Component {
   render() {
     const { title } = this.props.data.site.siteMetadata;
-    const tags = this.props.data.allMarkdownRemark.group;
+    const tags = this.props.data.allContentfulPost.group;
 
     return (
       <div>
@@ -23,7 +24,7 @@ class TagsRoute extends React.Component {
                   <ul className="tags__list">
                     {tags.map(tag =>
                       <li key={tag.fieldValue} className="tags__list-item">
-                        <Link to={`/tags/${kebabCase(tag.fieldValue)}/`} className="tags__list-item-link">
+                        <Link to={getPath(Tag, `${tag.fieldValue}`)} className="tags__list-item-link">
                           {tag.fieldValue} ({tag.totalCount})
                         </Link>
                       </li>
@@ -46,7 +47,7 @@ TagsRoute.propTypes = {
         title: PropTypes.string.isRequired
       })
     }),
-    allMarkdownRemark: PropTypes.shape({
+    allContentfulPost: PropTypes.shape({
       group: PropTypes.array.isRequired
     })
   })
@@ -66,11 +67,8 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(
-      limit: 2000
-      filter: { frontmatter: { layout: { eq: "post" }, draft: { ne: true } } }
-    ) {
-      group(field: frontmatter___tags) {
+    allContentfulPost (limit: 2000) {
+      group(field: tags) {
         fieldValue
         totalCount
       }

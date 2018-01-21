@@ -5,18 +5,14 @@ import Post from '../Post';
 class AuthorTemplateDetails extends React.Component {
   render() {
     const items = [];
-    const { authors } = this.props.data.site.siteMetadata;
-    const author = authors.find(
-      authorData => authorData.id === this.props.pathContext.authorId);
-    const posts = this.props.data.allMarkdownRemark.edges;
-    posts.forEach((postData) => {
-      const post = postData;
-      post.node.author = authors.find(
-        authorData => authorData.id === post.node.frontmatter.authorId);
-      items.push(
-        <Post data={post} key={post.node.fields.slug} />
-      );
-    });
+    const author = this.props.data.contentfulAuthor;
+    if (author.post) {
+      author.post.forEach((post) => {
+        items.push(
+          <Post data={post} key={post.id} />
+        );
+      });
+    }
 
     return (
       <div className="content">
@@ -37,17 +33,10 @@ class AuthorTemplateDetails extends React.Component {
 
 AuthorTemplateDetails.propTypes = {
   data: PropTypes.shape({
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        authors: PropTypes.array.isRequired
-      })
-    }),
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array.isRequired
+    contentfulAuthor: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      post: PropTypes.object.isRequired
     })
-  }),
-  pathContext: PropTypes.shape({
-    authorId: PropTypes.string.isRequired
   })
 };
 

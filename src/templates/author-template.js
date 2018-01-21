@@ -7,11 +7,11 @@ import AuthorTemplateDetails from '../components/AuthorTemplateDetails';
 class AuthorTemplate extends React.Component {
   render() {
     const { title } = this.props.data.site.siteMetadata;
-    const { authorId } = this.props.pathContext;
+    const { name } = this.props.data.contentfulAuthor;
 
     return (
       <div>
-        <Helmet title={`${authorId} - ${title}`} />
+        <Helmet title={`${name}가 쓴 글 - ${title}`} />
         <Sidebar {...this.props} />
         <AuthorTemplateDetails {...this.props} />
       </div>
@@ -26,17 +26,17 @@ AuthorTemplate.propTypes = {
         title: PropTypes.string.isRequired,
         authors: PropTypes.array.isRequired
       })
+    }),
+    contentfulAuthor: PropTypes.shape({
+      name: PropTypes.string.isRequired
     })
-  }),
-  pathContext: PropTypes.shape({
-    authorId: PropTypes.string.isRequired
   })
 };
 
 export default AuthorTemplate;
 
 export const pageQuery = graphql`
-  query AuthorPage($authorId: String) {
+  query AuthorPage ($id: String!) {
     site {
       siteMetadata {
         title
@@ -51,22 +51,25 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(
-        limit: 1000,
-        filter: { frontmatter: { authorId: { eq: $authorId }, layout: { eq: "post" }, draft: { ne: true } } },
-        sort: { order: DESC, fields: [frontmatter___date] }
-      ){
-      edges {
-        node {
-          fields {
-            slug
-            authorSlug
-          }
-          frontmatter {
-            title
-            date
-            authorId
-            description
+    contentfulAuthor (id: { eq: $id }) {
+      name
+      post {
+        id
+        title
+        slug
+        author {
+          name
+          slug
+        }
+        datetime
+        category {
+          id
+          name
+          slug
+        }
+        description {
+          childMarkdownRemark {
+            html
           }
         }
       }

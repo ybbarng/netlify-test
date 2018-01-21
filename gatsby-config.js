@@ -12,15 +12,15 @@ module.exports = {
       },
       {
         label: '잡담',
-        path: '/category/smalltalk'
+        path: '/categories/smalltalk'
       },
       {
         label: '공부',
-        path: '/category/study'
+        path: '/categories/study'
       },
       {
         label: '같이 놀기',
-        path: '/category/date'
+        path: '/categories/date'
       }
     ],
     group: {
@@ -30,7 +30,7 @@ module.exports = {
       {
         id: 'livvy',
         name: '현지',
-        about: '/about-livvy/',
+        about: '/pages/about-livvy',
         github: '#',
         email: '#',
         keybase: '#',
@@ -41,7 +41,7 @@ module.exports = {
       {
         id: 'ybbarng',
         name: '용배',
-        about: '/about-ybbarng/',
+        about: '/pages/about-ybbarng',
         github: '#',
         email: '#',
         keybase: '#',
@@ -53,10 +53,10 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: 'gatsby-source-contentful',
       options: {
-        path: `${__dirname}/src/pages`,
-        name: 'pages'
+        spaceId: 'yfvzzgl62yai',
+        accessToken: '19d10a8188f3a2c7a73d0ac0471aa768ea0c53f04d9b26982ab40811adcc9ce0'
       }
     },
     {
@@ -75,36 +75,35 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMarkdownRemark } }) => (
-              allMarkdownRemark.edges.map(edge =>
-                Object.assign({}, edge.node.frontmatter, {
-                  description: edge.node.frontmatter.description,
-                  date: edge.node.frontmatter.date,
-                  url: site.siteMetadata.url + edge.node.fields.slug,
-                  guid: site.siteMetadata.url + edge.node.fields.slug,
-                  custom_elements: [{ 'content:encoded': edge.node.html }]
+            serialize: ({ query: { site, allContentfulPost } }) => (
+              allContentfulPost.edges.map(edge =>
+                Object.assign({}, edge.node, {
+                  description: edge.node.description.description,
+                  date: edge.node.datetime,
+                  url: site.siteMetadata.url + edge.node.slug,
+                  guid: site.siteMetadata.url + edge.node.slug,
+                  custom_elements: [{ 'content:encoded': edge.node.body.childMarkdownRemark.html }]
                 })
               )
             ),
             query: `
               {
-                allMarkdownRemark(
+                allContentfulPost(
                   limit: 1000,
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                  filter: { frontmatter: { layout: { eq: "post" }, draft: { ne: true } } }
+                  sort: { order: DESC, fields: [datetime] }
                 ) {
                   edges {
                     node {
-                      html
-                      fields {
-                        slug
-                      }
-                      frontmatter {
-                        title
-                        date
-                        layout
-                        draft
+                      title
+                      slug
+                      datetime
+                      description {
                         description
+                      }
+                      body {
+                        childMarkdownRemark {
+                          html
+                        }
                       }
                     }
                   }
@@ -134,7 +133,7 @@ module.exports = {
             }
           },
           'gatsby-remark-prismjs',
-          'gatsby-remark-copy-linked-files',
+          //'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants',
           'gatsby-remark-emoji'
         ]

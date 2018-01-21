@@ -36,7 +36,7 @@ TagTemplate.propTypes = {
 export default TagTemplate;
 
 export const pageQuery = graphql`
-  query TagPage($tag: String) {
+  query TagPage($tag: String!) {
     site {
       siteMetadata {
         title
@@ -51,23 +51,30 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(
-        limit: 1000,
-        filter: { frontmatter: { tags: { in: [$tag] }, layout: { eq: "post" }, draft: { ne: true } } },
-        sort: { order: DESC, fields: [frontmatter___date] }
-      ){
+    allContentfulPost (
+      limit: 1000,
+      filter: { tags: { in: [$tag] }},
+      sort: { order: DESC, fields: [datetime] }
+    ){
       edges {
         node {
-          fields {
+          id
+          title
+          slug
+          author {
+            name
             slug
-            categorySlug
           }
-          frontmatter {
-            title
-            date
-            authorId
-            category
-            description
+          datetime
+          category {
+            id
+            name
+            slug
+          }
+          description {
+            childMarkdownRemark {
+              html
+            }
           }
         }
       }
