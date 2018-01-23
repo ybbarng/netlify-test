@@ -1,17 +1,19 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 import Sidebar from '../components/Sidebar';
+import notFoundPic from '../assets/404.jpg';
 
 class NotFoundRoute extends React.Component {
   render() {
     return (
       <div>
+        <Helmet title={'404 - NOT FOUND'} />
         <Sidebar {...this.props} />
         <div className="content">
           <div className="content__inner">
             <div className="page">
-              <h1 className="page__title">NOT FOUND</h1>
               <div className="page__body">
-                <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+                <img src={notFoundPic} className="page-photo" alt="페이지를 찾을 수 없습니다." />
               </div>
             </div>
           </div>
