@@ -1,3 +1,6 @@
+const Post = require('./src/models/post');
+const { getPath } = require('./src/utils');
+
 module.exports = {
   siteMetadata: {
     url: 'https://livvy.byb.kr',
@@ -78,10 +81,10 @@ module.exports = {
             serialize: ({ query: { site, allContentfulPost } }) => (
               allContentfulPost.edges.map(edge =>
                 Object.assign({}, edge.node, {
-                  description: edge.node.description ? edge.node.description : '',
+                  description: edge.node.description ? edge.node.description.description : '',
                   date: edge.node.datetime,
-                  url: site.siteMetadata.url + '/posts/' + edge.node.slug,
-                  guid: site.siteMetadata.url + '/posts/' + edge.node.slug,
+                  url: site.siteMetadata.url + getPath(Post, edge.node.slug),
+                  guid: site.siteMetadata.url + getPath(Post, edge.node.slug),
                   custom_elements: [{ 'content:encoded': edge.node.body.childMarkdownRemark.html }]
                 })
               )
@@ -133,7 +136,7 @@ module.exports = {
             }
           },
           'gatsby-remark-prismjs',
-          //'gatsby-remark-copy-linked-files',
+          // 'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants',
           'gatsby-remark-emoji'
         ]
