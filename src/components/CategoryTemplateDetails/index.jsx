@@ -1,11 +1,13 @@
 import React from 'react'; import PropTypes from 'prop-types';
 import Post from '../Post';
+import PostModel from '../../models/post';
 
 class CategoryTemplateDetails extends React.Component {
   render() {
     const items = [];
     const category = this.props.data.contentfulCategory;
     if (category.post) {
+      category.post.sort(PostModel.sort).reverse();
       category.post.forEach((post) => {
         items.push(
           <Post data={post} key={post.id} />

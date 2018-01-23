@@ -1,5 +1,6 @@
 const path = require('path');
 const slash = require('slash');
+const moment = require('moment');
 
 const postTemplate = path.resolve('src/templates/post-template.js');
 
@@ -19,5 +20,6 @@ module.exports = {
         }
       }
     }
-  `
+  `,
+  sort: (a, b) => moment(a.datetime).diff(moment(b.datetime))
 };

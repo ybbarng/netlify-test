@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Post from '../Post';
+import PostModel from '../../models/post';
 
 class AuthorTemplateDetails extends React.Component {
   render() {
     const items = [];
     const author = this.props.data.contentfulAuthor;
     if (author.post) {
+      author.post.sort(PostModel.sort).reverse();
       author.post.forEach((post) => {
         items.push(
           <Post data={post} key={post.id} />
