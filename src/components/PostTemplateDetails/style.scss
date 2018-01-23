@@ -86,7 +86,7 @@
                     text-decoration: none;
                     border: 0;
                     border-radius: 3px;
-                    color: lighten($color-base, 20%);
+                    color: darken($color-base, 4%);  // #555555
                     line-height: $typographic-base-line-height;
                     padding: 8px 16px;
                     &:hover,

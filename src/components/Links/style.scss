@@ -21,7 +21,7 @@
                 border: 0;
                 & i {
                     font-size: 14px;
-                    color: lighten($color-base, 20%);
+                    color: darken($color-base, 4%);  // #555555
                 }
                 &:hover,
                 &:focus {

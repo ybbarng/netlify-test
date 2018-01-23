@@ -8,9 +8,9 @@ $color-primary: #5d93ff;
 $color-secondary: #f7a046;
 
 $color-white: lighten($color-base, 100%);
-$color-gray: lighten($color-base, 40%);
-$color-gray-border: lighten($color-base, 77%);
-$color-gray-bg: lighten($color-base, 79%);
+$color-gray: lighten($color-base, 16%);  // #888888
+$color-gray-border: lighten($color-base, 53%);  // #e6e6e6
+$color-gray-bg: lighten($color-base, 55%);  // #ebebeb
 
 // Typographic
 @import url(https://fonts.googleapis.com/css?family=Noto+Sans);
