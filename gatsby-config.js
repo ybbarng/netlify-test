@@ -80,8 +80,8 @@ module.exports = {
                 Object.assign({}, edge.node, {
                   description: edge.node.description ? edge.node.description : '',
                   date: edge.node.datetime,
-                  url: site.siteMetadata.url + edge.node.slug,
-                  guid: site.siteMetadata.url + edge.node.slug,
+                  url: site.siteMetadata.url + '/posts/' + edge.node.slug,
+                  guid: site.siteMetadata.url + '/posts/' + edge.node.slug,
                   custom_elements: [{ 'content:encoded': edge.node.body.childMarkdownRemark.html }]
                 })
               )
