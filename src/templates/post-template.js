@@ -9,7 +9,7 @@ class PostTemplate extends React.Component {
     const post = this.props.data.contentfulPost;
 
     let description;
-    if (post.description.description !== null) {
+    if (post.description !== null) {
       description = post.description.description;
     } else {
       description = subtitle;

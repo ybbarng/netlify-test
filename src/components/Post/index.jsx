@@ -17,7 +17,7 @@ class Post extends React.Component {
       author: data.author,
       datetime: data.datetime,
       category: data.category,
-      description: data.description.childMarkdownRemark.html
+      description: data.description ? data.description.childMarkdownRemark.html : ''
     };
     // Contentful에 Locale을 추가했을 때, 이 값들이 null인 것들이 목록에
     // 보이는 버그에 대한 workaround
