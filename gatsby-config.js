@@ -5,7 +5,7 @@ module.exports = {
   siteMetadata: {
     url: 'https://livvy.byb.kr',
     title: '현지와 용배의 블로그',
-    subtitle: '현지와 용배의 블로그',
+    subtitle: '현지와 용배가 만들어가는 블로그입니다.',
     copyright: '© 2017 livvy & ybbarng All rights reserved.',
     disqusShortname: 'blog-of-livvy-and-ybbarng',
     menu: [
@@ -69,9 +69,10 @@ module.exports = {
           {
             site {
               siteMetadata {
-                url
                 title
-                subtitle
+                description: subtitle
+                site_url: url
+                copyright
               }
             }
           }
@@ -83,6 +84,7 @@ module.exports = {
                 Object.assign({}, edge.node, {
                   description: edge.node.description ? edge.node.description.description : '',
                   date: edge.node.datetime,
+                  author: edge.node.author ? edge.node.author.name : '',
                   url: site.siteMetadata.url + getPath(Post, edge.node.slug),
                   guid: site.siteMetadata.url + getPath(Post, edge.node.slug),
                   custom_elements: [{ 'content:encoded': edge.node.body.childMarkdownRemark.html }]
@@ -100,6 +102,9 @@ module.exports = {
                       title
                       slug
                       datetime
+                      author {
+                        name
+                      }
                       description {
                         description
                       }
