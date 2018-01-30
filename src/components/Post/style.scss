@@ -27,6 +27,7 @@
     }
     &__meta {
         &-time {
+            font-family: $capital-font-family;
             font-size: $typographic-small-font-size;
             color: $color-base;
             font-weight: 500;
