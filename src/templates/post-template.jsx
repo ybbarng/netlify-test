@@ -6,19 +6,13 @@ import PostTemplateDetails from '../components/PostTemplateDetails';
 class PostTemplate extends React.Component {
   render() {
     const { title, subtitle } = this.props.data.site.siteMetadata;
-    const post = this.props.data.contentfulPost;
-
-    let description;
-    if (post.description !== null) {
-      description = post.description.description;
-    } else {
-      description = subtitle;
-    }
+    const { title: postTitle, description: postDesciption } = this.props.data.contentfulPost;
+    const description = postDesciption !== null ? postDesciption.description : subtitle;
 
     return (
       <div>
         <Helmet>
-          <title>{`${post.title} - ${title}`}</title>
+          <title>{`${postTitle} - ${title}`}</title>
           <meta name="description" content={description} />
         </Helmet>
         <PostTemplateDetails {...this.props} />

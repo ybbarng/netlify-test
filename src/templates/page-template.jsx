@@ -6,17 +6,13 @@ import PageTemplateDetails from '../components/PageTemplateDetails';
 class PageTemplate extends React.Component {
   render() {
     const { title, subtitle } = this.props.data.site.siteMetadata;
-    const page = this.props.data.contentfulPage;
-
-    let description = subtitle;
-    if (page.description !== null) {
-      description = page.description.description;
-    }
+    const { title: pageTitle, description: pageDesciption } = this.props.data.contentfulPage;
+    const description = pageDesciption !== null ? pageDesciption.description : subtitle;
 
     return (
       <div>
         <Helmet>
-          <title>{`${page.title} - ${title}`}</title>
+          <title>{`${pageTitle} - ${title}`}</title>
           <meta name="description" content={description} />
         </Helmet>
         <PageTemplateDetails {...this.props} />
