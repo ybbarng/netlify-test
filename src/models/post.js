@@ -2,7 +2,7 @@ const path = require('path');
 const slash = require('slash');
 const moment = require('moment');
 
-const postTemplate = path.resolve('src/templates/post-template.js');
+const postTemplate = path.resolve('src/templates/post-template.jsx');
 
 module.exports = {
   name: 'Post',

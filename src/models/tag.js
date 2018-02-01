@@ -1,7 +1,7 @@
 const path = require('path');
 const slash = require('slash');
 
-const tagTemplate = path.resolve('src/templates/tag-template.js');
+const tagTemplate = path.resolve('src/templates/tag-template.jsx');
 
 module.exports = {
   name: 'Tag',

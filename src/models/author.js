@@ -1,7 +1,7 @@
 const path = require('path');
 const slash = require('slash');
 
-const authorTemplate = path.resolve('src/templates/author-template.js');
+const authorTemplate = path.resolve('src/templates/author-template.jsx');
 
 module.exports = {
   name: 'Author',

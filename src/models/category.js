@@ -1,7 +1,7 @@
 const path = require('path');
 const slash = require('slash');
 
-const categoryTemplate = path.resolve('src/templates/category-template.js');
+const categoryTemplate = path.resolve('src/templates/category-template.jsx');
 
 module.exports = {
   name: 'Category',

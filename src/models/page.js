@@ -1,7 +1,7 @@
 const path = require('path');
 const slash = require('slash');
 
-const pageTemplate = path.resolve('src/templates/page-template.js');
+const pageTemplate = path.resolve('src/templates/page-template.jsx');
 
 module.exports = {
   name: 'Page',
