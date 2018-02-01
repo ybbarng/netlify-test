@@ -46,6 +46,7 @@
     "lodash": "^4.17.2",
     "react-disqus-comments": "latest",
     "react-helmet": "^5.2.0",
+    "react-responsive-navbar": "^1.0.11",
     "typeface-roboto": "^0.0.50",
     "url-loader": "^0.6.2"
   },

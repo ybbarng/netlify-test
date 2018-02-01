@@ -37,6 +37,12 @@
             }
         }
     }
+    &__toggle {
+        width: 45px;
+        height: 45px;
+        font-size: 25px;
+        line-height: 45px;
+    }
     &:after {
         background: $color-gray-border;
         background: linear-gradient(to bottom, $color-gray-border 0%, $color-gray-border 48%, $color-white 100%);

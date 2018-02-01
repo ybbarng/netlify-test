@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
+import ResponsiveMenu from 'react-responsive-navbar';
 import './style.scss';
 
 class Menu extends React.Component {
@@ -25,7 +26,12 @@ class Menu extends React.Component {
 
     return (
       <nav className="menu">
-        {menuBlock}
+        <ResponsiveMenu
+          menuOpenButton={<div className="menu__toggle">&#9776;</div>}
+          menuCloseButton={<div className="menu__toggle">&times;</div>}
+          changeMenuOn="500px"
+          menu={menuBlock}
+        />
       </nav>
     );
   }
