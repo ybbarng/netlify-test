@@ -7,9 +7,11 @@
         list-style: none;
         padding: 0;
         margin: 0;
-        display: -webkit-box;
+        display: -webkit-flex; /* Safari */
         display: -ms-box;
         display: flex;
+        -webkit-flex-direction: row; /* Safari */
+        flex-direction: row;
         justify-content: center;
         &-item {
             padding: 0;
@@ -47,6 +49,10 @@
         display: none;
         @media (max-width: 685px) {
             display: block;
+            .menu__list {
+                -webkit-flex-direction: column; /* Safari */
+                flex-direction: column;
+            }
         }
         &-toggle-button {
             width: 45px;
