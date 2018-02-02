@@ -52,6 +52,21 @@
             .menu__list {
                 -webkit-flex-direction: column; /* Safari */
                 flex-direction: column;
+                &-item {
+                    &-link {
+                    background-color: $color-white;
+                    padding: 0;
+                        &:hover,
+                        &:focus {
+                            background-color: lighten($color-primary, 25%);
+                            border-bottom: none;
+                        }
+                        &--active {
+                            background-color: darken($color-white, 5%);
+                            border-bottom: none;
+                        }
+                    }
+                }
             }
         }
         &-toggle-button {
