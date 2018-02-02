@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
+import ResponsiveMenu from 'react-responsive-navbar';
 import './style.scss';
 
 class Menu extends React.Component {
@@ -20,12 +21,22 @@ class Menu extends React.Component {
             </Link>
           </li>
         )}
+        <li className="menu__list-item menu__list-item-login" key="login">
+          <a className="menu__list-item-link" href="https://be.contentful.com/login" title="로그인">Login</a>
+        </li>
       </ul>
     );
 
     return (
       <nav className="menu">
-        {menuBlock}
+        <ResponsiveMenu
+          menuOpenButton={<div className="menu__small-toggle-button open">&#9776;</div>}
+          menuCloseButton={<div className="menu__small-toggle-button close">&times;</div>}
+          changeMenuOn="685px"
+          menu={menuBlock}
+          largeMenuClassName="menu__large"
+          smallMenuClassName="menu__small"
+        />
       </nav>
     );
   }

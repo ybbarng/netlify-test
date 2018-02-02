@@ -7,9 +7,11 @@
         list-style: none;
         padding: 0;
         margin: 0;
-        display: -webkit-box;
+        display: -webkit-flex; /* Safari */
         display: -ms-box;
         display: flex;
+        -webkit-flex-direction: row; /* Safari */
+        flex-direction: row;
         justify-content: center;
         &-item {
             padding: 0;
@@ -34,6 +36,61 @@
                     color: $color-base;
                     border-bottom: 1px solid $color-base;
                 }
+            }
+        }
+        &-item-login {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    }
+    &__large {
+        display: block;
+        @media (max-width: 685px) {
+            display: none;
+        }
+    }
+    &__small {
+        display: none;
+        @media (max-width: 685px) {
+            display: block;
+            .menu__list {
+                -webkit-flex-direction: column; /* Safari */
+                flex-direction: column;
+                &-item {
+                    &-link {
+                    background-color: $color-white;
+                    padding: 0;
+                        &:hover,
+                        &:focus {
+                            background-color: lighten($color-primary, 25%);
+                            border-bottom: none;
+                        }
+                        &--active {
+                            background-color: darken($color-white, 5%);
+                            border-bottom: none;
+                        }
+                    }
+                }
+                &-item-login {
+                    position: relative;
+                }
+            }
+        }
+        &-toggle-button {
+            margin-left: auto;
+            margin-right: 0;
+            width: 45px;
+            height: 45px;
+            font-size: 25px;
+            line-height: 45px;
+            cursor: pointer;
+            &.close {
+                font-size: 40px;
+            }
+            &:hover,
+            &:focus {
+                color: $color-primary;
             }
         }
     }
