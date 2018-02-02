@@ -12,7 +12,6 @@ class Header extends React.Component {
       <div className="header-wrapper">
         <div className="header">
           <Menu data={menu} />
-          <a className="login" href="https://be.contentful.com/login" title="로그인">Login</a>
         </div>
       </div>
     );

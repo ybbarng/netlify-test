@@ -21,6 +21,9 @@ class Menu extends React.Component {
             </Link>
           </li>
         )}
+        <li className="menu__list-item menu__list-item-login" key="login">
+          <a className="menu__list-item-link" href="https://be.contentful.com/login" title="로그인">Login</a>
+        </li>
       </ul>
     );
 
