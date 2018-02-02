@@ -74,6 +74,11 @@
             height: 45px;
             font-size: 25px;
             line-height: 45px;
+            cursor: pointer;
+            &:hover,
+            &:focus {
+                color: $color-primary;
+            }
         }
     }
     &:after {
