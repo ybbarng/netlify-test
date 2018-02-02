@@ -83,6 +83,9 @@
             font-size: 25px;
             line-height: 45px;
             cursor: pointer;
+            &.close {
+                font-size: 40px;
+            }
             &:hover,
             &:focus {
                 color: $color-primary;
