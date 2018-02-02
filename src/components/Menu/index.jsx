@@ -27,10 +27,12 @@ class Menu extends React.Component {
     return (
       <nav className="menu">
         <ResponsiveMenu
-          menuOpenButton={<div className="menu__toggle">&#9776;</div>}
-          menuCloseButton={<div className="menu__toggle">&times;</div>}
-          changeMenuOn="500px"
+          menuOpenButton={<div className="menu__small-toggle-button">&#9776;</div>}
+          menuCloseButton={<div className="menu__small-toggle-button">&times;</div>}
+          changeMenuOn="685px"
           menu={menuBlock}
+          largeMenuClassName="menu__large"
+          smallMenuClassName="menu__small"
         />
       </nav>
     );

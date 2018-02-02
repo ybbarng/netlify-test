@@ -37,11 +37,23 @@
             }
         }
     }
-    &__toggle {
-        width: 45px;
-        height: 45px;
-        font-size: 25px;
-        line-height: 45px;
+    &__large {
+        display: block;
+        @media (max-width: 685px) {
+            display: none;
+        }
+    }
+    &__small {
+        display: none;
+        @media (max-width: 685px) {
+            display: block;
+        }
+        &-toggle-button {
+            width: 45px;
+            height: 45px;
+            font-size: 25px;
+            line-height: 45px;
+        }
     }
     &:after {
         background: $color-gray-border;
