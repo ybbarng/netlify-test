@@ -1,6 +1,8 @@
 const Post = require('./src/models/post');
 const { getPath } = require('./src/utils');
 
+require('dotenv').config();
+
 module.exports = {
   siteMetadata: {
     url: 'https://livvy.byb.kr',
@@ -58,8 +60,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-contentful',
       options: {
-        spaceId: 'yfvzzgl62yai',
-        accessToken: '19d10a8188f3a2c7a73d0ac0471aa768ea0c53f04d9b26982ab40811adcc9ce0'
+        spaceId: process.env.CONTENTFUL_SPACE_ID || '',
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || ''
       }
     },
     {

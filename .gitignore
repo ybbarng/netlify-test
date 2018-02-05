@@ -85,3 +85,6 @@ public/
 
 .gatsby-context.js
 gatsby-starter-lumen.iml
+
+# evironment variables
+.env
