@@ -13,9 +13,6 @@ $color-gray-border: lighten($color-base, 53%);  // #e6e6e6
 $color-gray-bg: lighten($color-base, 55%);  // #ebebeb
 
 // Typographic
-@import url(https://fonts.googleapis.com/css?family=Noto+Sans);
-@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
-@import url(https://fonts.googleapis.com/earlyaccess/notosansjp.css);
 $noto-sans: "Noto Sans";
 $noto-sans-kr: "Noto Sans KR";
 $noto-sans-jp: "Noto Sans JP";
