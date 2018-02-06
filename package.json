@@ -23,7 +23,6 @@
   "author": "Bang Yongbae <ybbarng@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "dotenv": "4.0.0",
     "gatsby": "^1.9.82",
     "gatsby-link": "^1.6.22",
     "gatsby-plugin-catch-links": "^1.0.5",
@@ -52,6 +51,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
+    "dotenv": "4.0.0",
     "eslint": "^3.x",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.x",

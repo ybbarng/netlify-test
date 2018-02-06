@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactDisqusComments from 'react-disqus-comments';
-import config from '../../../gatsby-config';
 import { getPath } from '../../utils';
 import Post from '../../models/post';
 
@@ -25,14 +24,14 @@ class Disqus extends Component {
     this.setState({ toasts });
   }
   render() {
-    const { post } = this.props;
-    if (!config.siteMetadata.disqusShortname) {
+    const { post, siteMetadata } = this.props;
+    if (!siteMetadata.disqusShortname) {
       return null;
     }
-    const url = config.siteMetadata.url + encodeURI(getPath(Post, post.slug));
+    const url = siteMetadata.url + encodeURI(getPath(Post, post.slug));
     return (
       <ReactDisqusComments
-        shortname={config.siteMetadata.disqusShortname}
+        shortname={siteMetadata.disqusShortname}
         identifier={post.datetime}
         title={post.title}
         url={url}

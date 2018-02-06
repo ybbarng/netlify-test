@@ -47,6 +47,8 @@ export const pageQuery = graphql`
           name
           about
         }
+        disqusShortname
+        url
       }
     }
     contentfulPost (id: { eq: $id }) {
