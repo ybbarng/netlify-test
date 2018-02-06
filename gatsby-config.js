@@ -1,7 +1,8 @@
+require('dotenv').config();
+
 const Post = require('./src/models/post');
 const { getPath } = require('./src/utils');
 
-require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
