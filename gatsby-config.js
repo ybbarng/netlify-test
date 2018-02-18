@@ -88,8 +88,8 @@ module.exports = {
                   description: edge.node.description ? edge.node.description.description : '',
                   date: edge.node.datetime,
                   author: edge.node.author ? edge.node.author.name : '',
-                  url: site.siteMetadata.url + getPath(Post, edge.node.slug),
-                  guid: site.siteMetadata.url + getPath(Post, edge.node.slug),
+                  url: site.siteMetadata.site_url + getPath(Post, edge.node.slug),
+                  guid: site.siteMetadata.site_url + getPath(Post, edge.node.slug),
                   custom_elements: [{ 'content:encoded': edge.node.body.childMarkdownRemark.html }]
                 })
               )
