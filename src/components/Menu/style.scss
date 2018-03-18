@@ -44,6 +44,24 @@
             right: 0;
         }
     }
+    &__logo {
+        display: inline-block;
+        position: absolute;
+        width: 55px;  //297px;
+        height: 45px;  //242px;
+        top: 0;
+        left: 0;
+        margin-left: 16px;
+        &__img {
+            width: 55px;  //297px;
+            height: 45px;  //242px;
+        }
+        @media (max-width: 685px) {
+            margin: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+    }
     &__large {
         display: block;
         @media (max-width: 685px) {

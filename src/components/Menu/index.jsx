@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import ResponsiveMenu from 'react-responsive-navbar';
 import './style.scss';
+import logo from '../../assets/blog_logo.png';
 
 class Menu extends React.Component {
   render() {
@@ -29,6 +30,7 @@ class Menu extends React.Component {
 
     return (
       <nav className="menu">
+        <a className="menu__logo" href="/" title="메인 화면으로 가기"><img className="menu__logo__img" src={logo} alt="로고" /></a>
         <ResponsiveMenu
           menuOpenButton={<div className="menu__small-toggle-button open">&#9776;</div>}
           menuCloseButton={<div className="menu__small-toggle-button close">&times;</div>}
