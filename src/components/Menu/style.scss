@@ -47,14 +47,14 @@
     &__logo {
         display: inline-block;
         position: absolute;
-        width: 55px;  //297px;
-        height: 45px;  //242px;
+        width: 116px;
+        height: 45px;
         top: 0;
         left: 0;
         margin-left: 16px;
         &__img {
-            width: 55px;  //297px;
-            height: 45px;  //242px;
+            width: 116px;
+            height: 45px;
         }
         @media (max-width: 685px) {
             margin: 0;
