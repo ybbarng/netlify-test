@@ -11,7 +11,7 @@ class CategoryTemplate extends React.Component {
 
     return (
       <div>
-        <Helmet title={`${name} - ${title}`} />
+        <Helmet title={`All posts of ${name}|${title}`} />
         <Sidebar {...this.props} />
         <CategoryTemplateDetails {...this.props} />
       </div>

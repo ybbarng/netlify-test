@@ -12,7 +12,7 @@ class PageTemplate extends React.Component {
     return (
       <div>
         <Helmet>
-          <title>{`${pageTitle} - ${title}`}</title>
+          <title>{`${pageTitle}|${title}`}</title>
           <meta name="description" content={description} />
         </Helmet>
         <PageTemplateDetails {...this.props} />
@@ -30,7 +30,8 @@ PageTemplate.propTypes = {
       })
     }),
     contentfulPage: PropTypes.shape({
-      title: PropTypes.string.isRequired
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string
     })
   })
 };

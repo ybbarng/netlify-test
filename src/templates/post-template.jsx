@@ -7,12 +7,13 @@ class PostTemplate extends React.Component {
   render() {
     const { title, subtitle } = this.props.data.site.siteMetadata;
     const { title: postTitle, description: postDesciption } = this.props.data.contentfulPost;
+    const postCategory = this.props.data.contentfulPost.category.name;
     const description = postDesciption !== null ? postDesciption.description : subtitle;
 
     return (
       <div>
         <Helmet>
-          <title>{`${postTitle} - ${title}`}</title>
+          <title>{`${postTitle} - ${postCategory}|${title}`}</title>
           <meta name="description" content={description} />
         </Helmet>
         <PostTemplateDetails {...this.props} />

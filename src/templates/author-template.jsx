@@ -11,7 +11,7 @@ class AuthorTemplate extends React.Component {
 
     return (
       <div>
-        <Helmet title={`${name}가 쓴 글 - ${title}`} />
+        <Helmet title={`${name}가 쓴 글|${title}`} />
         <Sidebar {...this.props} />
         <AuthorTemplateDetails {...this.props} />
       </div>
