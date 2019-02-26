@@ -11,7 +11,7 @@ module.exports = {
     url: 'https://livvy.byb.kr',
     title: '현지와 용배의 블로그',
     subtitle: '현지와 용배가 만들어가는 블로그입니다.',
-    copyright: '© 2017-2018 livvy & ybbarng All rights reserved.',
+    copyright: '© 2017-2019 livvy & ybbarng All rights reserved.',
     disqusShortname: 'blog-of-livvy-and-ybbarng',
     menu: [
       {
