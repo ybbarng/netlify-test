@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const path = require('path');
 
 const Author = require('./src/models/author');
 const Category = require('./src/models/category');
@@ -10,6 +11,17 @@ const { getPath } = require('./src/utils');
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
+
+  createPage({
+    path: '/404',
+    component: path.resolve('./src/templates/not-found-template.jsx')
+  });
+
+  createPage({
+    path: '/',
+    component: path.resolve('./src/templates/index-template.jsx')
+  });
+
   let tags = [];
 
   await ((resolve, reject) => {
