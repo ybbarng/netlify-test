@@ -19,12 +19,12 @@ const CategoriesTemplate = ({ data }) => {
   const categories = data.allContentfulCategory.edges;
 
   return (
-    <Layout title={`All Categories|${title}`} description={subtitle}>
+    <Layout title={`모든 분류|${title}`} description={subtitle}>
       <Sidebar />
       <div className="content">
         <div className="content__inner">
           <div className="page">
-            <h1 className="page__title">Categories</h1>
+            <h1 className="page__title">분류</h1>
             <div className="page__body">
               <div className="categories">
                 <ul className="categories__list">

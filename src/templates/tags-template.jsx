@@ -14,12 +14,12 @@ const TagsTemplate = ({ data }) => {
   const tags = data.allContentfulPost.group;
 
   return (
-    <Layout title={`All Tags|${title}`} description={subtitle}>
+    <Layout title={`모든 태그|${title}`} description={subtitle}>
       <Sidebar />
       <div className="content">
         <div className="content__inner">
           <div className="page">
-            <h1 className="page__title">Tags</h1>
+            <h1 className="page__title">태그</h1>
             <div className="page__body">
               <div className="tags">
                 <ul className="tags__list">
