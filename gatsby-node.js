@@ -34,45 +34,41 @@ exports.createPages = async ({ graphql, actions }) => {
 
   let tags = [];
 
-  await ((resolve, reject) => {
-    _.each([Author, Category, Page, Post], (model) => {
-      // query data
-      graphql(model.query).then((result) => {
-        // failed
-        if (result.errors) {
-          console.log(result.errors);
-          reject(result.errors);
-        }
+  _.each([Author, Category, Page, Post], (model) => {
+    // query data
+    graphql(model.query).then((result) => {
+      // failed
+      if (result.errors) {
+        console.log(result.errors);
+      }
 
-        // succeeded
-        _.each(result.data[`allContentful${model.name}`].edges, (edge) => {
-          createPage({
-            path: getPath(model, edge.node.slug),
-            component: model.component,
-            context: {
-              id: edge.node.id
-            }
-          });
-          if (model === Post) {
-            if (edge.node.tags) {
-              tags = tags.concat(edge.node.tags);
-            }
+      // succeeded
+      _.each(result.data[`allContentful${model.name}`].edges, (edge) => {
+        createPage({
+          path: getPath(model, edge.node.slug),
+          component: model.component,
+          context: {
+            id: edge.node.id
           }
         });
         if (model === Post) {
-          tags = _.uniq(tags);
-          _.each(tags, (tag) => {
-            createPage({
-              path: getPath(Tag, tag),
-              component: Tag.component,
-              context: {
-                tag
-              }
-            });
-          });
+          if (edge.node.tags) {
+            tags = tags.concat(edge.node.tags);
+          }
         }
       });
+      if (model === Post) {
+        tags = _.uniq(tags);
+        _.each(tags, (tag) => {
+          createPage({
+            path: getPath(Tag, tag),
+            component: Tag.component,
+            context: {
+              tag
+            }
+          });
+        });
+      }
     });
-    resolve();
   });
 };

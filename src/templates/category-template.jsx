@@ -1,37 +1,39 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+
+import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
-import CategoryTemplateDetails from '../components/CategoryTemplateDetails';
+import Posts from '../components/Posts';
 
-class CategoryTemplate extends React.Component {
-  render() {
-    const { title } = this.props.data.site.siteMetadata;
-    const { name } = this.props.data.contentfulCategory;
+const CategoryTemplate = ({ data }) => {
+  const { title, subtitle } = data.site.siteMetadata;
+  const { name, post: posts } = data.contentfulCategory;
 
-    return (
-      <div>
-        <Helmet title={`All posts of ${name}|${title}`} />
-        <Sidebar {...this.props} />
-        <CategoryTemplateDetails {...this.props} />
-      </div>
-    );
-  }
-}
+  return (
+    <Layout title={`All posts of ${name}|${title}`} description={subtitle}>
+      <Sidebar />
+      <Posts
+        title={name}
+        posts={posts}
+      />
+    </Layout>
+  );
+};
 
 CategoryTemplate.propTypes = {
   data: PropTypes.shape({
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
         title: PropTypes.string.isRequired,
-        authors: PropTypes.array.isRequired
+        subtitle: PropTypes.string.isRequired
       })
     }),
     contentfulCategory: PropTypes.shape({
-      name: PropTypes.string.isRequired
+      name: PropTypes.string.isRequired,
+      post: PropTypes.array
     })
-  })
+  }).isRequired
 };
 
 export default CategoryTemplate;
@@ -42,14 +44,6 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         subtitle
-        copyright
-        group {
-          name
-        }
-        authors {
-          id
-          name
-        }
       }
     }
     contentfulCategory (id: {eq: $id }) {

@@ -1,40 +1,41 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+
+import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
-import AuthorTemplateDetails from '../components/AuthorTemplateDetails';
+import Posts from '../components/Posts';
 
-class AuthorTemplate extends React.Component {
-  render() {
-    const { title } = this.props.data.site.siteMetadata;
-    const { name } = this.props.data.contentfulAuthor;
+const AuthorTemplate = ({ data }) => {
+  const { title: siteName, subtitle } = data.site.siteMetadata;
+  const { name, post: posts } = data.contentfulAuthor;
+  const title = `${name}가 쓴 글`;
 
-    return (
-      <div>
-        <Helmet title={`${name}가 쓴 글|${title}`} />
-        <Sidebar {...this.props} />
-        <AuthorTemplateDetails {...this.props} />
-      </div>
-    );
-  }
-}
+  return (
+    <Layout title={`${title}|${siteName}`} description={subtitle}>
+      <Sidebar />
+      <Posts
+        title={title}
+        posts={posts}
+      />
+    </Layout>
+  );
+};
 
 AuthorTemplate.propTypes = {
   data: PropTypes.shape({
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
         title: PropTypes.string.isRequired,
-        authors: PropTypes.array.isRequired
+        subtitle: PropTypes.string.isRequired
       })
     }),
     contentfulAuthor: PropTypes.shape({
-      name: PropTypes.string.isRequired
+      name: PropTypes.string.isRequired,
+      post: PropTypes.array
     })
-  })
+  }).isRequired
 };
-
-export default AuthorTemplate;
 
 export const pageQuery = graphql`
   query AuthorPage ($id: String!) {
@@ -42,14 +43,6 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         subtitle
-        copyright
-        group {
-          name
-        }
-        authors {
-          id
-          name
-        }
       }
     }
     contentfulAuthor (id: { eq: $id }) {
@@ -77,3 +70,5 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export default AuthorTemplate;
