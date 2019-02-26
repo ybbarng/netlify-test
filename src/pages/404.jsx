@@ -1,4 +1,5 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import Sidebar from '../components/Sidebar';
 import notFoundPic from '../assets/404.jpg';

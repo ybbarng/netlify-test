@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+const postCssPlugins = require('./postcss-config.js');
+
 const Post = require('./src/models/post');
 const { getPath } = require('./src/utils');
 
@@ -194,6 +196,14 @@ module.exports = {
     'gatsby-plugin-offline',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-postcss-sass'
+    {
+      resolve: 'gatsby-plugin-sass',
+      options: {
+        postCssPlugins: [...postCssPlugins],
+        cssLoaderOptions: {
+          camelCase: false
+        }
+      }
+    }
   ]
 };

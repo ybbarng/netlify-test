@@ -1,7 +1,4 @@
 const _ = require('lodash');
-const Promise = require('bluebird');
-const lost = require('lost');
-const pxtorem = require('postcss-pxtorem');
 
 const Author = require('./src/models/author');
 const Category = require('./src/models/category');
@@ -11,11 +8,11 @@ const Tag = require('./src/models/tag');
 
 const { getPath } = require('./src/utils');
 
-exports.createPages = ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators;
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions;
   let tags = [];
 
-  return new Promise((resolve, reject) => {
+  await ((resolve, reject) => {
     _.each([Author, Category, Page, Post], (model) => {
       // query data
       graphql(model.query).then((result) => {
@@ -55,40 +52,5 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       });
     });
     resolve();
-  });
-};
-
-exports.modifyWebpackConfig = ({ config }) => {
-  config.merge({
-    postcss: [
-      lost(),
-      pxtorem({
-        rootValue: 16,
-        unitPrecision: 5,
-        propList: [
-          'font',
-          'font-size',
-          'line-height',
-          'letter-spacing',
-          'margin',
-          'margin-top',
-          'margin-left',
-          'margin-bottom',
-          'margin-right',
-          'padding',
-          'padding-top',
-          'padding-left',
-          'padding-bottom',
-          'padding-right',
-          'border-radius',
-          'width',
-          'max-width'
-        ],
-        selectorBlackList: [],
-        replace: true,
-        mediaQuery: false,
-        minPixelValue: 0
-      })
-    ]
   });
 };
