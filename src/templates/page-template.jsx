@@ -1,25 +1,23 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+
+import Layout from '../components/Layout';
 import PageTemplateDetails from '../components/PageTemplateDetails';
 
-class PageTemplate extends React.Component {
-  render() {
-    const { title, subtitle } = this.props.data.site.siteMetadata;
-    const { title: pageTitle, description: pageDesciption } = this.props.data.contentfulPage;
-    const description = pageDesciption !== null ? pageDesciption.description : subtitle;
+const PageTemplate = ({ data }) => {
+  const { title, subtitle } = data.site.siteMetadata;
+  const { title: pageTitle, description: pageDesciption } = data.contentfulPage;
+  const description = pageDesciption !== null ? pageDesciption.description : subtitle;
 
-    return (
-      <div>
-        <Helmet>
-          <title>{`${pageTitle}|${title}`}</title>
-          <meta name="description" content={description} />
-        </Helmet>
-        <PageTemplateDetails {...this.props} />
-      </div>
-    );
-  }
-}
+  return (
+    <Layout title={`${pageTitle}|${title}`} description={description}>
+      <PageTemplateDetails
+        page={data.contentfulPage}
+      />
+    </Layout>
+  );
+};
 
 PageTemplate.propTypes = {
   data: PropTypes.shape({
@@ -33,10 +31,8 @@ PageTemplate.propTypes = {
       title: PropTypes.string.isRequired,
       description: PropTypes.string
     })
-  })
+  }).isRequired
 };
-
-export default PageTemplate;
 
 export const pageQuery = graphql`
   query PageBySlug($id: String!) {
@@ -63,3 +59,5 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export default PageTemplate;

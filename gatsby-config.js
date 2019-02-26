@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+const postCssPlugins = require('./postcss-config.js');
+
 const Post = require('./src/models/post');
 const { getPath } = require('./src/utils');
 
@@ -9,7 +11,7 @@ module.exports = {
     url: 'https://livvy.byb.kr',
     title: '현지와 용배의 블로그',
     subtitle: '현지와 용배가 만들어가는 블로그입니다.',
-    copyright: '© 2017-2018 livvy & ybbarng All rights reserved.',
+    copyright: '© 2017-2019 livvy & ybbarng All rights reserved.',
     disqusShortname: 'blog-of-livvy-and-ybbarng',
     menu: [
       {
@@ -194,6 +196,14 @@ module.exports = {
     'gatsby-plugin-offline',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-postcss-sass'
+    {
+      resolve: 'gatsby-plugin-sass',
+      options: {
+        postCssPlugins: [...postCssPlugins],
+        cssLoaderOptions: {
+          camelCase: false
+        }
+      }
+    }
   ]
 };

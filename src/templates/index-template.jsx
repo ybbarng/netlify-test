@@ -1,40 +1,42 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+
+import Layout from '../components/Layout';
 import Post from '../components/Post';
 import Sidebar from '../components/Sidebar';
 
-class IndexRoute extends React.Component {
-  render() {
-    const items = [];
-    const { title, subtitle } = this.props.data.site.siteMetadata;
-    const posts = this.props.data.allContentfulPost.edges;
-    if (posts) {
-      posts.forEach((post) => {
-        items.push(
-          <Post data={post.node} key={post.node.id} />
-        );
-      });
-    }
+import '../assets/scss/init.scss';
 
-    return (
-      <div>
-        <Helmet>
-          <title>{title}</title>
-          <meta name="description" content={subtitle} />
-        </Helmet>
-        <Sidebar {...this.props} />
-        <div className="content">
-          <div className="content__inner">
-            {items}
-          </div>
+const IndexTemplate = ({ data }) => {
+  const { title, subtitle } = data.site.siteMetadata;
+
+  const items = [];
+  const posts = data.allContentfulPost.edges;
+  if (posts) {
+    posts.forEach((post) => {
+      items.push(
+        <Post data={post.node} key={post.node.id} />
+      );
+    });
+  }
+
+  return (
+    <Layout
+      title={title}
+      description={subtitle}
+    >
+      <Sidebar isIndex />
+      <div className="content">
+        <div className="content__inner">
+          {items}
         </div>
       </div>
-    );
-  }
-}
+    </Layout>
+  );
+};
 
-IndexRoute.propTypes = {
+IndexTemplate.propTypes = {
   data: PropTypes.shape({
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
@@ -50,10 +52,9 @@ IndexRoute.propTypes = {
     allContentfulPost: PropTypes.shape({
       edges: PropTypes.array.isRequired
     })
-  })
+  }).isRequired
 };
 
-export default IndexRoute;
 
 export const pageQuery = graphql`
   query IndexQuery {
@@ -61,10 +62,6 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         subtitle
-        copyright
-        group {
-          name
-        }
       }
     }
     allContentfulAuthor {
@@ -104,3 +101,5 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export default IndexTemplate;

@@ -1,26 +1,26 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+
+import Layout from '../components/Layout';
 import PostTemplateDetails from '../components/PostTemplateDetails';
 
-class PostTemplate extends React.Component {
-  render() {
-    const { title, subtitle } = this.props.data.site.siteMetadata;
-    const { title: postTitle, description: postDesciption } = this.props.data.contentfulPost;
-    const postCategory = this.props.data.contentfulPost.category.name;
-    const description = postDesciption !== null ? postDesciption.description : subtitle;
+const PostTemplate = ({ data }) => {
+  const { title, subtitle } = data.site.siteMetadata;
+  const { title: postTitle, description: postDesciption } = data.contentfulPost;
+  const postCategory = data.contentfulPost.category.name;
+  const description = postDesciption !== null ? postDesciption.description : subtitle;
 
-    return (
-      <div>
-        <Helmet>
-          <title>{`${postTitle} - ${postCategory}|${title}`}</title>
-          <meta name="description" content={description} />
-        </Helmet>
-        <PostTemplateDetails {...this.props} />
-      </div>
-    );
-  }
-}
+  return (
+    <Layout title={`${postTitle} - ${postCategory}|${title}`} description={description}>
+      <PostTemplateDetails
+        post={data.contentfulPost}
+        footer={subtitle}
+        siteMetadata={data.site.siteMetadata}
+      />
+    </Layout>
+  );
+};
 
 PostTemplate.propTypes = {
   data: PropTypes.shape({
@@ -31,10 +31,8 @@ PostTemplate.propTypes = {
       })
     }),
     contentfulPost: PropTypes.object.isRequired
-  })
+  }).isRequired
 };
-
-export default PostTemplate;
 
 export const pageQuery = graphql`
   query PostBySlug($id: String!) {
@@ -79,3 +77,5 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export default PostTemplate;
