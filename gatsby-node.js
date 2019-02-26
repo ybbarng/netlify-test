@@ -13,13 +13,23 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
   createPage({
+    path: '/',
+    component: path.resolve('./src/templates/index-template.jsx')
+  });
+
+  createPage({
     path: '/404',
     component: path.resolve('./src/templates/not-found-template.jsx')
   });
 
   createPage({
-    path: '/',
-    component: path.resolve('./src/templates/index-template.jsx')
+    path: '/categories',
+    component: path.resolve('./src/templates/categories-template.jsx')
+  });
+
+  createPage({
+    path: '/tags',
+    component: path.resolve('./src/templates/tags-template.jsx')
   });
 
   let tags = [];
