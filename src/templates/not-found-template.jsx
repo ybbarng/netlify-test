@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import Sidebar from '../components/Sidebar';
 
-import notFoundPic from '../assets/404.jpg';
+import notFoundPic from '../assets/images/404.jpg';
 
 const NotFoundTemplate = ({ data }) => {
   console.log(data);

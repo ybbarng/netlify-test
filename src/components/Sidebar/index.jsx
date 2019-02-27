@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { graphql, StaticQuery } from 'gatsby';
 import Link from 'gatsby-link';
 
-import profilePic from '../../assets/photo.jpg';
+import profilePic from '../../assets/images/photo.jpg';
 
 import './style.scss';
 

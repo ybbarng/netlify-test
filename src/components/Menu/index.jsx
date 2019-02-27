@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import ResponsiveMenu from 'react-responsive-navbar';
+
+import logo from '../../assets/images/blog_logo.png';
+
 import './style.scss';
-import logo from '../../assets/blog_logo.png';
 
 class Menu extends React.Component {
   render() {
