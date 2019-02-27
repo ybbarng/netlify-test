@@ -85,7 +85,7 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allContentfulPost } }) => (
-              allContentfulPost.edges.map(edge =>
+              allContentfulPost.edges.map(edge => (
                 Object.assign({}, edge.node, {
                   description: edge.node.description ? edge.node.description.description : '',
                   date: edge.node.datetime,
@@ -94,7 +94,7 @@ module.exports = {
                   guid: site.siteMetadata.site_url + getPath(Post, edge.node.slug),
                   custom_elements: [{ 'content:encoded': edge.node.body.childMarkdownRemark.html }]
                 })
-              )
+              ))
             ),
             query: `
               {
@@ -155,6 +155,13 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: `${__dirname}/src/assets/images/`
+      }
+    },
+    {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: 'UA-93238645-3'
@@ -183,14 +190,14 @@ module.exports = {
               }
           }`,
         output: '/sitemap.xml',
-        serialize: ({ site, allSitePage }) =>
+        serialize: ({ site, allSitePage }) => (
           allSitePage.edges.map((edge) => {
             return {
               url: site.siteMetadata.url + edge.node.path,
               changefreq: 'daily',
               priority: 0.7
             };
-          })
+          }))
       }
     },
     'gatsby-plugin-offline',
