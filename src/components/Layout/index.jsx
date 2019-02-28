@@ -21,6 +21,8 @@ const LayoutView = ({ children, title, description, siteName, menu, logo, copyri
       <meta name="og:description" content={description} />
       <meta name="og:image" content={originalLogo} />
       <meta name="og:image:type" content="image/png" />
+      <meta name="og:image:width" content="442" />
+      <meta name="og:image:height" content="171" />
       <meta name="og:locale" content="ko_KR" />
     </Helmet>
     <Header
