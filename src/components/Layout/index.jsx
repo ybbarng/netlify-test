@@ -8,7 +8,7 @@ import Header from '../Header';
 
 import styles from './style.scss';
 
-import originalLogo from '../../assets/images/blog_logo.png';
+import openGraphLogo from '../../assets/images/blog_logo_og.png';
 
 const LayoutView = ({ children, title, description, siteName, menu, logo, copyright }) => (
   <div className={styles.layout}>
@@ -19,10 +19,10 @@ const LayoutView = ({ children, title, description, siteName, menu, logo, copyri
       <meta name="og:site_name" content={siteName} />
       <meta name="description" content={description} />
       <meta name="og:description" content={description} />
-      <meta name="og:image" content={originalLogo} />
+      <meta name="og:image" content={openGraphLogo} />
       <meta name="og:image:type" content="image/png" />
-      <meta name="og:image:width" content="442" />
-      <meta name="og:image:height" content="171" />
+      <meta name="og:image:width" content="800" />
+      <meta name="og:image:height" content="800" />
       <meta name="og:locale" content="ko_KR" />
     </Helmet>
     <Header
