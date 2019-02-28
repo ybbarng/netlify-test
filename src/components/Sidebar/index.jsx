@@ -1,21 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql, StaticQuery } from 'gatsby';
+import Img from 'gatsby-image';
 import Link from 'gatsby-link';
-
-import profilePic from '../../assets/photo.jpg';
 
 import './style.scss';
 
-const SidebarView = ({ group, subtitle, isIndex }) => {
+const SidebarView = ({ group, subtitle, mainPhoto, isIndex }) => {
   /* eslint-disable jsx-a11y/img-redundant-alt */
   const groupBlock = (
     <div>
       <Link to="/">
-        <img
-          src={profilePic}
-          className="sidebar__group-photo"
+        <Img
+          title="Main Image"
           alt={group.name}
+          className="sidebar__group-photo"
+          fixed={mainPhoto.fixed}
         />
       </Link>
       { isIndex ? (
@@ -63,13 +63,19 @@ const Sidebar = props => (
             }
           }
         }
+        mainPhoto: imageSharp(original: { src: { regex: "/main_photo/" } }) {
+          fixed(width: 145, height: 257, quality: 100) {
+            ...GatsbyImageSharpFixed
+          }
+        }
       }
     `}
     render={data => (
       <SidebarView
         {...props}
-        subtitle={data.site.siteMetadata.subtitle}
         group={data.site.siteMetadata.group}
+        subtitle={data.site.siteMetadata.subtitle}
+        mainPhoto={data.mainPhoto}
       />
     )}
   />

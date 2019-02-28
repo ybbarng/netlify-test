@@ -8,14 +8,17 @@ import Header from '../Header';
 
 import styles from './style.scss';
 
-const LayoutView = ({ children, title, description, menu, copyright }) => (
+const LayoutView = ({ children, title, description, menu, logo, copyright }) => (
   <div className={styles.layout}>
     <Helmet>
       <html lang="en" />
       <title>{title}</title>
       <meta name="description" content={description} />
     </Helmet>
-    <Header data={menu} />
+    <Header
+      menu={menu}
+      logo={logo}
+    />
     <div className="layout">
       <div className="layout__body">
         {children}
@@ -30,6 +33,7 @@ LayoutView.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   menu: PropTypes.array.isRequired,
+  logo: PropTypes.object.isRequired,
   copyright: PropTypes.string.isRequired
 };
 
@@ -46,12 +50,18 @@ const Layout = props => (
             copyright
           }
         }
+        logo: imageSharp(original: { src: { regex: "/blog_logo/" } }) {
+          fixed(width: 116, height: 45, quality: 100) {
+            ...GatsbyImageSharpFixed_noBase64
+          }
+        }
       }
     `}
     render={data => (
       <LayoutView
         {...props}
         menu={data.site.siteMetadata.menu}
+        logo={data.logo}
         copyright={data.site.siteMetadata.copyright}
       />
     )}
