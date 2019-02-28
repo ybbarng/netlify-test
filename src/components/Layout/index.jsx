@@ -8,12 +8,20 @@ import Header from '../Header';
 
 import styles from './style.scss';
 
-const LayoutView = ({ children, title, description, menu, logo, copyright }) => (
+import originalLogo from '../../assets/images/blog_logo.png';
+
+const LayoutView = ({ children, title, description, siteName, menu, logo, copyright }) => (
   <div className={styles.layout}>
     <Helmet>
       <html lang="en" />
       <title>{title}</title>
+      <meta name="og:title" content={title} />
+      <meta name="og:site_name" content={siteName} />
       <meta name="description" content={description} />
+      <meta name="og:description" content={description} />
+      <meta name="og:image" content={originalLogo} />
+      <meta name="og:image:type" content="image/png" />
+      <meta name="og:locale" content="ko_KR" />
     </Helmet>
     <Header
       menu={menu}
@@ -32,6 +40,7 @@ LayoutView.propTypes = {
   children: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  siteName: PropTypes.string.isRequired,
   menu: PropTypes.array.isRequired,
   logo: PropTypes.object.isRequired,
   copyright: PropTypes.string.isRequired
@@ -43,6 +52,7 @@ const Layout = props => (
       query LayoutQuery {
         site {
           siteMetadata {
+            title
             menu {
               label
               path
@@ -60,6 +70,7 @@ const Layout = props => (
     render={data => (
       <LayoutView
         {...props}
+        siteName={data.site.siteMetadata.title}
         menu={data.site.siteMetadata.menu}
         logo={data.logo}
         copyright={data.site.siteMetadata.copyright}
