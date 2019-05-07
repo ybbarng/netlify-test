@@ -5,10 +5,13 @@ const postCssPlugins = require('./postcss-config.js');
 const Post = require('./src/models/post');
 const { getPath } = require('./src/utils');
 
+const siteUrl = 'https://livvy.byb.kr';
+
 
 module.exports = {
   siteMetadata: {
-    url: 'https://livvy.byb.kr',
+    siteUrl,
+    url: siteUrl,
     title: '현지와 용배의 블로그',
     subtitle: '현지와 용배가 만들어가는 블로그입니다.',
     copyright: '© 2017-2019 livvy & ybbarng All rights reserved.',
@@ -170,34 +173,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        query: `
-            {
-              site {
-                siteMetadata {
-                  url
-                }
-              }
-              allSitePage(
-                filter: {
-                  path: { regex: "/^(?!/404/|/404.html|/dev-404-page/)/" }
-                }
-              ) {
-                edges {
-                  node {
-                    path
-                  }
-                }
-              }
-          }`,
-        output: '/sitemap.xml',
-        serialize: ({ site, allSitePage }) => (
-          allSitePage.edges.map((edge) => {
-            return {
-              url: site.siteMetadata.url + edge.node.path,
-              changefreq: 'daily',
-              priority: 0.7
-            };
-          }))
+        output: '/sitemap.xml'
       }
     },
     'gatsby-plugin-offline',
