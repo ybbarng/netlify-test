@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/66ed832a-011d-42ca-83a5-1c8eea288727/deploy-status)](https://app.netlify.com/sites/livvy-and-byb/deploys)
+
 # Blog for Livvy and BYB
 This is a repository of a blog of me and my girl friend.
 
