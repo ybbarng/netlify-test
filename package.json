@@ -23,7 +23,7 @@
   "author": "Bang Yongbae <ybbarng@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "gatsby": "^2.8.2",
+    "gatsby": "^2.8.3",
     "gatsby-image": "^2.1.2",
     "gatsby-link": "^2.1.1",
     "gatsby-plugin-catch-links": "^2.0.15",
@@ -74,6 +74,6 @@
     "lost": "^8.3.1",
     "postcss-pxtorem": "^4.0.1",
     "prettier": "^1.17.1",
-    "webpack": "^4.32.2"
+    "webpack": "^4.33.0"
   }
 }
