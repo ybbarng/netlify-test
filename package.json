@@ -23,7 +23,7 @@
   "author": "Bang Yongbae <ybbarng@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "gatsby": "^2.8.3",
+    "gatsby": "^2.8.5",
     "gatsby-image": "^2.1.2",
     "gatsby-link": "^2.1.1",
     "gatsby-plugin-catch-links": "^2.0.15",
@@ -38,7 +38,7 @@
     "gatsby-plugin-sitemap": "^2.1.0",
     "gatsby-remark-emoji": "^0.0.3",
     "gatsby-remark-images": "^3.0.14",
-    "gatsby-remark-prismjs": "^3.2.9",
+    "gatsby-remark-prismjs": "^3.2.10",
     "gatsby-remark-responsive-iframe": "^2.0.9",
     "gatsby-remark-smartypants": "^2.0.8",
     "gatsby-source-contentful": "^2.0.67",
@@ -55,7 +55,7 @@
     "react-responsive-navbar": "^1.0.11",
     "sharp": "^0.22.1",
     "typeface-roboto": "^0.0.54",
-    "url-loader": "^1.1.2"
+    "url-loader": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -68,12 +68,12 @@
     "eslint-plugin-import": "^2.17.3",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.13.0",
-    "file-loader": "^3.0.1",
+    "file-loader": "^4.0.0",
     "gatsby-source-filesystem": "^2.0.38",
     "gh-pages": "^2.0.1",
     "lost": "^8.3.1",
     "postcss-pxtorem": "^4.0.1",
-    "prettier": "^1.17.1",
+    "prettier": "^1.18.0",
     "webpack": "^4.33.0"
   }
 }
